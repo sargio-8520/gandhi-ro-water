@@ -9,11 +9,13 @@
   width: 100%;
   z-index: 1000;
 
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid #e2e8f0;
+  background: rgba(19, 73, 135, 0.4);
+  border-bottom: 1px solid #dbeafe;
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(4, 9, 21, 0.06);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 
@@ -22,15 +24,15 @@
    ===================================================== */
 
 .navbar-container {
-  max-width: 1200px;
-  min-height: 70px;
+  max-width: 1280px;
+  min-height: 82px;
 
   margin: 0 auto;
   padding: 0 24px;
 
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 24px;
 }
 
 
@@ -42,25 +44,22 @@
   display: flex;
   align-items: center;
 
-  gap: 12px;
+  gap: 8px;
 
   flex-shrink: 0;
 
   text-decoration: none;
 }
 
-
-/* =====================================================
-   LOGO IMAGE
-   ===================================================== */
 .navbar-logo {
-  width: 150px;
-  height: 85px;
+  width: 76px;
+  height: 76px;
+
   object-fit: contain;
   display: block;
+
   flex-shrink: 0;
 }
-
 
 
 /* =====================================================
@@ -76,38 +75,47 @@
   line-height: 1;
 }
 
-
-/* GANDHI RO WATER */
-
 .brand-name {
-  color: #075985;
+  color: #172554;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 1.65rem;
+  font-size: 1.55rem;
   font-weight: 800;
 
-  letter-spacing: 0.04em;
+  letter-spacing: -0.02em;
 
   white-space: nowrap;
 }
 
+.brand-ro {
+  margin-top: 3px;
 
-/* ENTERPRISES */
-
-.brand-sub {
-  margin-top: 5px;
-
-  color: #0284c7;
+  color: #0369c9;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 0.72rem;
+  font-size: 1.28rem;
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+
+  white-space: nowrap;
+}
+
+.brand-sub {
+  margin-top: 4px;
+
+  color: #172554;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.55rem;
   font-weight: 700;
 
-  letter-spacing: 0.32em;
+  letter-spacing: 0.27em;
 
-  text-align: center;
+  text-transform: uppercase;
 
   white-space: nowrap;
 }
@@ -123,23 +131,24 @@
   display: flex;
   align-items: center;
 
-  gap: 23px;
+  gap: 22px;
 }
-
 
 .navbar-links a {
   position: relative;
 
-  color: #334155;
+  color: #172554;
 
   text-decoration: none;
 
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 700;
 
-  transition: color 0.2s ease;
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease;
 }
-
 
 .navbar-links a::after {
   content: "";
@@ -147,23 +156,21 @@
   position: absolute;
 
   left: 0;
-  bottom: -7px;
+  bottom: -8px;
 
   width: 0;
   height: 2px;
 
-  border-radius: 10px;
+  border-radius: 20px;
 
-  background: #0284c7;
+  background: #1479d1;
 
   transition: width 0.2s ease;
 }
 
-
 .navbar-links a:hover {
-  color: #0284c7;
+  color: #1479d1;
 }
-
 
 .navbar-links a:hover::after {
   width: 100%;
@@ -171,33 +178,33 @@
 
 
 /* =====================================================
-   ORDER WATER BUTTON
+   WHATSAPP BUTTON
    ===================================================== */
 
 .navbar-button {
-  min-height: 42px;
+  min-height: 44px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  gap: 7px;
+  gap: 8px;
 
-  padding: 10px 17px;
+  padding: 10px 18px;
 
   flex-shrink: 0;
 
-  border-radius: 8px;
+  border-radius: 24px;
 
-  background: #0284c7;
+  background: #159447;
   color: #ffffff;
 
   text-decoration: none;
 
-  font-size: 0.84rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 800;
 
-  box-shadow: 0 7px 18px rgba(2, 132, 199, 0.15);
+  box-shadow: 0 8px 18px rgba(21, 148, 71, 0.18);
 
   transition:
     background 0.2s ease,
@@ -205,13 +212,27 @@
     box-shadow 0.2s ease;
 }
 
-
 .navbar-button:hover {
-  background: #0369a1;
+  background: #117a3b;
 
   transform: translateY(-1px);
 
-  box-shadow: 0 10px 22px rgba(2, 132, 199, 0.22);
+  box-shadow: 0 11px 24px rgba(21, 148, 71, 0.25);
+}
+
+.whatsapp-icon {
+  width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid currentColor;
+  border-radius: 50%;
+
+  font-size: 0.75rem;
+  line-height: 1;
 }
 
 
@@ -230,25 +251,28 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 9px;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
 
-  background: #ffffff;
+  background: #eff6ff;
   color: #075985;
 
-  font-size: 1.35rem;
+  font-size: 1.3rem;
+  font-weight: 700;
 
   cursor: pointer;
 
   transition:
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-
 .menu-toggle:hover {
-  background: #f0f9ff;
-  border-color: #bae6fd;
+  background: #dbeafe;
+  border-color: #93c5fd;
+
+  transform: translateY(-1px);
 }
 
 
@@ -266,17 +290,17 @@
   display: flex;
   flex-direction: column;
 
-  padding: 14px 16px 18px;
+  padding: 14px 18px 20px;
 
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  border-top: 1px solid #dbeafe;
+  border-bottom: 1px solid #dbeafe;
 
   background: rgba(255, 255, 255, 0.98);
 
-  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.1);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 
@@ -287,41 +311,47 @@
 
   border-radius: 9px;
 
-  color: #334155;
+  color: #172554;
 
   text-decoration: none;
 
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 700;
 
   transition:
     background 0.2s ease,
     color 0.2s ease;
 }
 
-
 .mobile-menu a:hover {
-  background: #f0f9ff;
-  color: #0284c7;
+  background: #eff6ff;
+  color: #1479d1;
 }
 
 
-/* Mobile order button */
+/* Mobile WhatsApp button */
 
 .mobile-menu .mobile-order-button {
   margin-top: 8px;
 
-  background: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: 22px;
+
+  background: #159447;
   color: #ffffff;
 
   text-align: center;
 
-  font-weight: 700;
+  font-weight: 800;
 }
 
-
 .mobile-menu .mobile-order-button:hover {
-  background: #0369a1;
+  background: #117a3b;
   color: #ffffff;
 }
 
@@ -330,25 +360,36 @@
    TABLET
    ===================================================== */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
   .navbar-container {
-    gap: 18px;
-  }
-
-  .navbar-links {
     gap: 16px;
   }
 
+  .navbar-links {
+    gap: 15px;
+  }
+
   .navbar-links a {
-    font-size: 0.8rem;
+    font-size: 0.77rem;
+  }
+
+  .navbar-button {
+    padding: 9px 13px;
+
+    font-size: 0.75rem;
   }
 
   .brand-name {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
-  .brand-sub {
-    font-size: 0.65rem;
+  .brand-ro {
+    font-size: 1.1rem;
+  }
+
+  .navbar-logo {
+    width: 68px;
+    height: 68px;
   }
 }
 
@@ -357,28 +398,29 @@
    MOBILE
    ===================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .navbar-container {
-    min-height: 80px;
+    min-height: 76px;
 
     padding: 0 18px;
   }
 
   .navbar-logo {
-    width: 100px;
-    height: 65px;
+    width: 64px;
+    height: 64px;
   }
 
   .brand-name {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+  }
+
+  .brand-ro {
+    font-size: 1rem;
   }
 
   .brand-sub {
-    font-size: 0.6rem;
-
-    letter-spacing: 0.25em;
-
-    margin-top: 4px;
+    font-size: 0.5rem;
+    letter-spacing: 0.23em;
   }
 
   .navbar-links,
@@ -402,23 +444,29 @@
   }
 
   .navbar-brand {
-    gap: 8px;
+    gap: 6px;
   }
 
   .navbar-logo {
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
   }
 
   .brand-name {
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
 
-    letter-spacing: 0.02em;
+  .brand-ro {
+    font-size: 0.88rem;
   }
 
   .brand-sub {
-    font-size: 0.52rem;
+    font-size: 0.45rem;
+    letter-spacing: 0.19em;
+  }
 
-    letter-spacing: 0.2em;
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
   }
 }

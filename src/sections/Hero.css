@@ -1,159 +1,184 @@
-/* =========================
-   Hero Section
-   ========================= */
+/* =====================================================
+   HERO
+   ===================================================== */
 
 .hero {
   position: relative;
-
   overflow: hidden;
 
   background:
     radial-gradient(
-      circle at 85% 20%,
-      rgba(125, 211, 252, 0.18),
-      transparent 30%
+      circle at 82% 30%,
+      rgba(13, 113, 196, 0.575),
+      transparent 90%
     ),
     linear-gradient(
       135deg,
-      #f0f9ff 0%,
-      #ffffff 65%
+      #eaf6ff 0%,
+      #ffffff 58%,
+      #e8f5ff 100%
     );
+
+  border-bottom: 1px solid #dbeafe;
 }
 
-/* =========================
-   Hero Container
-   ========================= */
+
+/* =====================================================
+   HERO CONTAINER
+   ===================================================== */
 
 .hero-container {
   max-width: 1200px;
-  min-height: 680px;
+  min-height: 510px;
 
   margin: 0 auto;
-  padding: 90px 24px;
+  padding: 86px 24px 48px;
 
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 0.92fr 1.08fr;
 
   align-items: center;
 
-  gap: 60px;
+  gap: 25px;
 }
 
-/* =========================
-   Location Badge
-   ========================= */
 
-.hero-location-badge {
+/* =====================================================
+   HERO CONTENT
+   ===================================================== */
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+}
+
+
+/* =====================================================
+   BADGE
+   ===================================================== */
+
+.hero-badge {
   width: fit-content;
 
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  padding: 6px 14px;
 
-  padding: 7px 12px;
-
-  border: 1px solid #bae6fd;
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.8);
+  background: #1689e8;
+  color: #ffffff;
 
-  color: #0369a1;
-
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.hero-location-badge span {
-  color: #16a34a;
-
-  font-size: 0.65rem;
-}
-
-/* =========================
-   Eyebrow
-   ========================= */
-
-.hero-eyebrow {
-  margin-top: 22px;
-  margin-bottom: 18px;
-
-  color: #0284c7;
-
-  font-size: 0.78rem;
+  font-size: 0.62rem;
   font-weight: 800;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
+
+  box-shadow:
+    0 6px 16px rgba(22, 137, 232, 0.18);
 }
 
-/* =========================
-   Heading
-   ========================= */
+
+/* =====================================================
+   BUSINESS NAME
+   ===================================================== */
+
+.hero-business-name {
+  margin-top: 18px;
+  margin-bottom: 9px;
+
+  color: #075985;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+}
+
+
+/* =====================================================
+   HEADING
+   ===================================================== */
 
 .hero-content h1 {
-  max-width: 680px;
+  max-width: 620px;
 
-  color: #0f172a;
+  margin: 0;
 
-  font-size: clamp(3.2rem, 6vw, 5.3rem);
+  color: #07145c;
+
+  font-size: clamp(2.8rem, 5vw, 4.7rem);
 
   line-height: 0.98;
 
   letter-spacing: -0.045em;
+
+  font-weight: 850;
 }
 
 .hero-content h1 span {
   display: block;
 
-  color: #0284c7;
+  margin-top: 8px;
+
+  color: #111827;
+
+  font-size: 0.55em;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
 }
 
-/* =========================
-   Description
-   ========================= */
+
+/* =====================================================
+   DESCRIPTION
+   ===================================================== */
 
 .hero-description {
-  max-width: 600px;
+  max-width: 470px;
 
-  margin-top: 26px;
+  margin-top: 20px;
 
-  color: #475569;
+  color: #334155;
 
-  font-size: 1.05rem;
+  font-size: 0.92rem;
 
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
-/* =========================
-   Hero Actions
-   ========================= */
+
+/* =====================================================
+   ACTIONS
+   ===================================================== */
 
 .hero-actions {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 12px;
+  gap: 10px;
 
-  margin-top: 34px;
+  margin-top: 23px;
 }
 
-.hero-primary-button,
-.hero-secondary-button {
-  min-height: 48px;
+.hero-whatsapp,
+.hero-call {
+  min-height: 43px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
   gap: 8px;
 
-  padding: 13px 21px;
+  padding: 10px 18px;
 
-  border-radius: 9px;
+  border-radius: 8px;
 
   text-decoration: none;
 
-  font-size: 0.88rem;
-  font-weight: 750;
+  font-size: 0.78rem;
+  font-weight: 800;
 
   transition:
     transform 0.2s ease,
@@ -161,376 +186,596 @@
     background 0.2s ease;
 }
 
-.hero-primary-button {
-  background: #0284c7;
+
+/* =====================================================
+   WHATSAPP
+   ===================================================== */
+
+.hero-whatsapp {
+  background: #16a34a;
 
   color: #ffffff;
 
   box-shadow:
-    0 10px 25px rgba(2, 132, 199, 0.2);
+    0 8px 18px rgba(22, 163, 74, 0.2);
 }
 
-.hero-primary-button:hover {
-  background: #0369a1;
+.hero-whatsapp:hover {
+  background: #15803d;
 
   transform: translateY(-2px);
 
   box-shadow:
-    0 14px 30px rgba(2, 132, 199, 0.28);
+    0 11px 24px rgba(22, 163, 74, 0.25);
 }
 
-.hero-secondary-button {
-  border: 1px solid #bae6fd;
+
+/* =====================================================
+   CALL
+   ===================================================== */
+
+.hero-call {
+  border: 1px solid #bfdbfe;
 
   background: #ffffff;
 
-  color: #0369a1;
+  color: #075985;
 }
 
-.hero-secondary-button:hover {
-  background: #f0f9ff;
+.hero-call:hover {
+  background: #eff6ff;
 
   transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(30, 64, 175, 0.08);
 }
 
-/* =========================
-   Features
-   ========================= */
 
-.hero-features {
+/* =====================================================
+   WHATSAPP ICON
+   ===================================================== */
+
+.whatsapp-icon {
+  font-size: 0.8rem;
+}
+
+
+/* =====================================================
+   TRUST FEATURES
+   ===================================================== */
+
+.hero-trust {
   display: grid;
 
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns:
+    repeat(4, max-content);
 
-  gap: 14px 28px;
+  gap: 22px;
 
-  margin-top: 38px;
+  margin-top: 30px;
 }
 
-.hero-features div {
-  display: flex;
+.hero-trust-item {
+  display: grid;
+
+  grid-template-columns: 29px auto;
+  grid-template-rows: auto auto;
+
+  column-gap: 7px;
+
   align-items: center;
-
-  gap: 8px;
-
-  color: #475569;
-
-  font-size: 0.85rem;
 }
 
-.hero-features strong {
-  color: #0284c7;
+.trust-icon {
+  grid-row: span 2;
 
-  font-size: 0.95rem;
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  border: 1px solid #93c5fd;
+
+  color: #0369a1;
+
+  font-size: 0.75rem;
+  font-weight: 900;
 }
 
-/* =========================
-   Hero Visual
-   ========================= */
+.hero-trust-item strong {
+  color: #0f172a;
+
+  font-size: 0.68rem;
+}
+
+.hero-trust-item span {
+  color: #64748b;
+
+  font-size: 0.58rem;
+}
+
+
+/* =====================================================
+   HERO VISUAL
+   ===================================================== */
 
 .hero-visual {
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-}
-
-/* =========================
-   Water Card
-   ========================= */
-
-.water-card {
   position: relative;
 
-  width: min(100%, 420px);
-
-  min-height: 500px;
-
-  padding: 50px 35px;
+  min-height: 430px;
 
   display: flex;
-  flex-direction: column;
 
   align-items: center;
   justify-content: center;
 
-  overflow: hidden;
-
-  text-align: center;
-
-  border-radius: 32px;
-
-  background:
-    linear-gradient(
-      155deg,
-      #0284c7 0%,
-      #0369a1 50%,
-      #075985 100%
-    );
-
-  box-shadow:
-    0 30px 80px rgba(7, 89, 133, 0.22);
+  overflow: visible;
 }
 
-/* =========================
-   Card Glow
-   ========================= */
 
-.water-card-glow {
+/* =====================================================
+   WATER GLOW
+   ===================================================== */
+
+.hero-water-glow {
   position: absolute;
 
-  width: 260px;
-  height: 260px;
-
-  top: -90px;
-  right: -80px;
+  width: 540px;
+  height: 350px;
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(96, 165, 250, 0.28) 0%,
+      rgba(219, 234, 254, 0.16) 48%,
+      transparent 72%
+    );
 
-  filter: blur(2px);
+  filter: blur(5px);
+
+  pointer-events: none;
 }
 
-/* =========================
-   Water Drop
-   ========================= */
 
-.water-drop {
+/* =====================================================
+   REALISTIC PRODUCT IMAGE
+   ===================================================== */
+
+.hero-product-image {
   position: relative;
-  z-index: 1;
 
-  width: 135px;
-  height: 135px;
+  z-index: 3;
 
-  margin-bottom: 28px;
+  width: min(100%, 610px);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: auto;
 
-  border-radius: 50%;
+  max-height: 475px;
 
-  background: rgba(255, 255, 255, 0.13);
+  display: block;
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  object-fit: contain;
 
-  box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.08);
+  object-position: center;
 
-  font-size: 4.5rem;
+  filter:
+    drop-shadow(
+      0 24px 28px rgba(15, 23, 42, 0.16)
+    );
 
-  animation: waterFloat 4s ease-in-out infinite;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
 }
 
-@keyframes waterFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
+.hero-product-image:hover {
+  transform: translateY(-5px);
 
-  50% {
-    transform: translateY(-8px);
-  }
+  filter:
+    drop-shadow(
+      0 31px 34px rgba(15, 23, 42, 0.2)
+    );
 }
 
-/* =========================
-   Card Text
-   ========================= */
 
-.water-card p {
-  position: relative;
-  z-index: 1;
+/* =====================================================
+   LOCATION
+   ===================================================== */
 
-  color: #bae6fd;
+.hero-location {
+  position: absolute;
 
-  font-size: 0.7rem;
+  z-index: 5;
 
-  font-weight: 800;
+  bottom: 2px;
+  left: 50%;
 
-  letter-spacing: 0.18em;
-}
+  transform: translateX(-50%);
 
-.water-card h2 {
-  position: relative;
-  z-index: 1;
+  white-space: nowrap;
 
-  margin-top: 12px;
-
-  color: #ffffff;
-
-  font-size: 2.15rem;
-
-  line-height: 1.15;
-
-  letter-spacing: -0.025em;
-}
-
-/* =========================
-   Location
-   ========================= */
-
-.water-card-location {
-  position: relative;
-  z-index: 1;
-
-  display: flex;
-  align-items: center;
-
-  gap: 7px;
-
-  margin-top: 22px;
-
-  color: #e0f2fe;
-
-  font-size: 0.85rem;
-}
-
-/* =========================
-   Card Badge
-   ========================= */
-
-.water-card-badge {
-  position: relative;
-  z-index: 1;
-
-  margin-top: 25px;
-
-  padding: 8px 13px;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 7px 14px;
 
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.95);
 
-  color: #e0f2fe;
+  border: 1px solid #bfdbfe;
+
+  color: #075985;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  box-shadow:
+    0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =====================================================
+   QUICK SERVICES
+   ===================================================== */
+
+.hero-services {
+  position: relative;
+
+  z-index: 20;
+
+  max-width: 1150px;
+
+  min-height: 67px;
+
+  margin: 0 auto;
+
+  transform: translateY(8px);
+
+  padding: 8px 14px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  align-items: center;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbeafe;
+
+  box-shadow:
+    0 10px 28px rgba(30, 64, 175, 0.12);
+}
+
+
+/* =====================================================
+   SERVICE ITEM
+   ===================================================== */
+
+.hero-service {
+  min-height: 45px;
+
+  display: grid;
+
+  grid-template-columns: 32px 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  column-gap: 8px;
+
+  align-items: center;
+
+  padding: 0 12px;
+
+  border-right: 1px solid #e2e8f0;
+}
+
+.hero-service:last-child {
+  border-right: none;
+}
+
+
+/* =====================================================
+   SERVICE ICON
+   ===================================================== */
+
+.hero-service span {
+  grid-row: span 2;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eff6ff;
+
+  border: 1px solid #bfdbfe;
+
+  color: #1676d2;
+
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+
+.hero-service strong {
+  align-self: end;
+
+  color: #0f172a;
 
   font-size: 0.65rem;
 
-  font-weight: 700;
+  line-height: 1.1;
 }
 
-/* =========================
-   Tablet
-   ========================= */
+.hero-service small {
+  align-self: start;
 
-@media (max-width: 900px) {
+  color: #64748b;
+
+  font-size: 0.56rem;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 950px) {
+
   .hero-container {
-    min-height: auto;
-
     grid-template-columns: 1fr;
 
-    gap: 55px;
-
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 95px;
+    padding-bottom: 35px;
   }
 
   .hero-content {
-    max-width: 720px;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    text-align: center;
   }
 
-  .hero-visual {
-    justify-content: flex-start;
-  }
-
-  .water-card {
-    width: min(100%, 500px);
-  }
-}
-
-/* =========================
-   Mobile
-   ========================= */
-
-@media (max-width: 600px) {
-  .hero-container {
-    padding: 55px 18px 65px;
-
-    gap: 45px;
-  }
-
-  .hero-location-badge {
-    font-size: 0.65rem;
-  }
-
-  .hero-eyebrow {
-    margin-top: 18px;
-
-    font-size: 0.68rem;
-  }
-
-  .hero-content h1 {
-    font-size: clamp(2.8rem, 13vw, 4rem);
-
-    line-height: 1;
+  .hero-badge {
+    margin: 0 auto;
   }
 
   .hero-description {
-    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    font-size: 0.95rem;
+  .hero-actions {
+    justify-content: center;
+  }
 
-    line-height: 1.7;
+  .hero-trust {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    width: 100%;
+
+    max-width: 700px;
+
+    min-height: 410px;
+
+    margin: 0 auto;
+  }
+
+  .hero-product-image {
+    width: min(100%, 630px);
+
+    max-height: 450px;
+  }
+
+  .hero-services {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+  .hero-container {
+    padding:
+      92px
+      17px
+      25px;
+
+    gap: 18px;
+  }
+
+  .hero-business-name {
+    font-size: 0.61rem;
+
+    letter-spacing: 0.09em;
+  }
+
+  .hero-content h1 {
+    font-size:
+      clamp(
+        2.55rem,
+        12vw,
+        3.6rem
+      );
+  }
+
+  .hero-content h1 span {
+    font-size: 0.52em;
+  }
+
+  .hero-description {
+    font-size: 0.86rem;
+
+    line-height: 1.55;
   }
 
   .hero-actions {
     flex-direction: column;
 
     width: 100%;
-
-    margin-top: 28px;
   }
 
-  .hero-primary-button,
-  .hero-secondary-button {
+  .hero-whatsapp,
+  .hero-call {
     width: 100%;
   }
 
-  .hero-features {
-    grid-template-columns: 1fr;
+  .hero-trust {
+    grid-template-columns:
+      repeat(2, max-content);
 
-    gap: 11px;
+    justify-content: center;
 
-    margin-top: 30px;
+    gap: 16px 25px;
   }
 
-  .hero-features div {
-    font-size: 0.82rem;
+
+  /* PRODUCT AREA */
+
+  .hero-visual {
+    min-height: 315px;
+
+    width: 100%;
+
+    margin-top: 4px;
   }
 
-  .water-card {
-    min-height: 390px;
+  .hero-product-image {
+    width: 100%;
 
-    padding: 35px 24px;
+    max-width: 470px;
 
-    border-radius: 25px;
+    max-height: 365px;
   }
 
-  .water-drop {
-    width: 105px;
-    height: 105px;
+  .hero-water-glow {
+    width: 380px;
 
-    font-size: 3.5rem;
+    height: 245px;
   }
 
-  .water-card h2 {
-    font-size: 1.8rem;
+  .hero-location {
+    bottom: 0;
+
+    font-size: 0.58rem;
+
+    padding: 6px 11px;
+  }
+
+
+  /* SERVICES */
+
+  .hero-services {
+    margin:
+      0
+      12px;
+
+    padding: 8px;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 4px;
+
+    transform: none;
+  }
+
+  .hero-service {
+    padding: 8px;
+
+    border-right: none;
+
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .hero-service:nth-last-child(-n + 2) {
+    border-bottom: none;
   }
 }
 
-/* =========================
-   Reduced Motion
-   ========================= */
 
-@media (prefers-reduced-motion: reduce) {
-  .water-drop {
-    animation: none;
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+  .hero-container {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
-  .hero-primary-button,
-  .hero-secondary-button {
+  .hero-trust {
+    gap: 13px 17px;
+  }
+
+  .hero-trust-item strong {
+    font-size: 0.62rem;
+  }
+
+  .hero-trust-item span {
+    font-size: 0.53rem;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .hero-product-image {
+    max-width: 380px;
+
+    max-height: 315px;
+  }
+
+  .hero-water-glow {
+    width: 325px;
+
+    height: 215px;
+  }
+
+  .hero-services {
+    grid-template-columns:
+      1fr 1fr;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-whatsapp,
+  .hero-call,
+  .hero-product-image {
     transition: none;
+  }
+
+  .hero-product-image:hover {
+    transform: none;
   }
 }
