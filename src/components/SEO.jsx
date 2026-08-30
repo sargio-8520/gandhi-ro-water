@@ -20,24 +20,39 @@ function SEO() {
     },
     makesOffer: [
       {
-        "@type": "Offer",
         itemOffered: {
           "@type": "Product",
           name: "20L RO Water Jar",
+          offers: {
+              "@type": "Offer",
+              price: "20",
+              priceCurrency: "INR",
+              availability: "https://schema.org/InStock",
+          },
         },
       },
       {
-        "@type": "Offer",
         itemOffered: {
-          "@type": "Product",
-          name: "1L Water Bottle",
+            "@type": "Product",
+            name: "1L Water Bottle",
+            offers: {
+              "@type": "Offer",
+              price: "15",
+              priceCurrency: "INR",
+              availability: "https://schema.org/InStock",
+            },
         },
       },
       {
-        "@type": "Offer",
         itemOffered: {
           "@type": "Product",
           name: "500ml Water Bottle",
+          offers: {
+            "@type": "Offer",
+            price: "8",
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+          },
         },
       },
       {
