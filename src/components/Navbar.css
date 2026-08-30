@@ -1,0 +1,424 @@
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e2e8f0;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* =====================================================
+   NAVBAR CONTAINER
+   ===================================================== */
+
+.navbar-container {
+  max-width: 1200px;
+  min-height: 70px;
+
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+/* =====================================================
+   BRAND
+   ===================================================== */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+
+/* =====================================================
+   LOGO IMAGE
+   ===================================================== */
+.navbar-logo {
+  width: 150px;
+  height: 85px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+
+
+/* =====================================================
+   BRAND TEXT
+   ===================================================== */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  line-height: 1;
+}
+
+
+/* GANDHI RO WATER */
+
+.brand-name {
+  color: #075985;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.65rem;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+
+  white-space: nowrap;
+}
+
+
+/* ENTERPRISES */
+
+.brand-sub {
+  margin-top: 5px;
+
+  color: #0284c7;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.32em;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   DESKTOP NAVIGATION
+   ===================================================== */
+
+.navbar-links {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 23px;
+}
+
+
+.navbar-links a {
+  position: relative;
+
+  color: #334155;
+
+  text-decoration: none;
+
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  transition: color 0.2s ease;
+}
+
+
+.navbar-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: #0284c7;
+
+  transition: width 0.2s ease;
+}
+
+
+.navbar-links a:hover {
+  color: #0284c7;
+}
+
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+
+/* =====================================================
+   ORDER WATER BUTTON
+   ===================================================== */
+
+.navbar-button {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 10px 17px;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #0284c7;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 0.84rem;
+  font-weight: 700;
+
+  box-shadow: 0 7px 18px rgba(2, 132, 199, 0.15);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.navbar-button:hover {
+  background: #0369a1;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 10px 22px rgba(2, 132, 199, 0.22);
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+   ===================================================== */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  margin-left: auto;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #075985;
+
+  font-size: 1.35rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.menu-toggle:hover {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
+.mobile-menu {
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 14px 16px 18px;
+
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* Mobile links */
+
+.mobile-menu a {
+  padding: 13px 12px;
+
+  border-radius: 9px;
+
+  color: #334155;
+
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.mobile-menu a:hover {
+  background: #f0f9ff;
+  color: #0284c7;
+}
+
+
+/* Mobile order button */
+
+.mobile-menu .mobile-order-button {
+  margin-top: 8px;
+
+  background: #0284c7;
+  color: #ffffff;
+
+  text-align: center;
+
+  font-weight: 700;
+}
+
+
+.mobile-menu .mobile-order-button:hover {
+  background: #0369a1;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 1050px) {
+  .navbar-container {
+    gap: 18px;
+  }
+
+  .navbar-links {
+    gap: 16px;
+  }
+
+  .navbar-links a {
+    font-size: 0.8rem;
+  }
+
+  .brand-name {
+    font-size: 1.4rem;
+  }
+
+  .brand-sub {
+    font-size: 0.65rem;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 800px) {
+  .navbar-container {
+    min-height: 80px;
+
+    padding: 0 18px;
+  }
+
+  .navbar-logo {
+    width: 100px;
+    height: 65px;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .brand-sub {
+    font-size: 0.6rem;
+
+    letter-spacing: 0.25em;
+
+    margin-top: 4px;
+  }
+
+  .navbar-links,
+  .navbar-button {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 450px) {
+  .navbar-container {
+    padding: 0 14px;
+  }
+
+  .navbar-brand {
+    gap: 8px;
+  }
+
+  .navbar-logo {
+    width: 58px;
+    height: 58px;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+
+    letter-spacing: 0.02em;
+  }
+
+  .brand-sub {
+    font-size: 0.52rem;
+
+    letter-spacing: 0.2em;
+  }
+}
