@@ -1,196 +1,376 @@
 /* =========================
-   Footer
+   FOOTER
    ========================= */
 
 .footer {
-  background: #0f172a;
+  width: 100%;
+  background: #082f49;
   color: #cbd5e1;
 }
 
+
 /* =========================
-   Footer Container
+   FOOTER MAIN CONTAINER
    ========================= */
 
 .footer-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1150px;
+
   margin: 0 auto;
-  padding: 70px 24px 55px;
+  padding: 42px 24px 34px;
 
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr 1.1fr;
-  gap: 50px;
+  grid-template-columns: 1.5fr 0.8fr 1fr 1fr;
+
+  gap: 42px;
 }
 
+
 /* =========================
-   Footer Brand
+   BRAND
    ========================= */
 
 .footer-brand {
-  max-width: 340px;
+  max-width: 320px;
 }
+
+
+/* =========================
+   LOGO + BRAND NAME
+   ========================= */
 
 .footer-logo {
   display: inline-flex;
-  flex-direction: column;
+
+  align-items: center;
+
+  gap: 13px;
 
   text-decoration: none;
-  line-height: 1.1;
+
+  color: inherit;
 }
 
-.footer-logo span {
-  color: #ffffff;
-
-  font-size: 1.25rem;
-  font-weight: 800;
-
-  letter-spacing: 0.08em;
-}
-
-.footer-logo small {
-  margin-top: 5px;
-
-  color: #94a3b8;
-
-  font-size: 0.62rem;
-  font-weight: 600;
-
-  letter-spacing: 0.12em;
-}
-
-.footer-brand > p {
-  margin-top: 20px;
-
-  color: #94a3b8;
-
-  font-size: 0.88rem;
-  line-height: 1.7;
-}
 
 /* =========================
-   WhatsApp Button
+   G-RO LOGO
+   ========================= */
+
+.footer-logo-image {
+  width: 92px;
+  height: 92px;
+
+  flex: 0 0 92px;
+
+  display: block;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 4px 8px rgba(0, 0, 0, 0.2)
+  );
+
+  transition: transform 0.2s ease;
+}
+
+.footer-logo:hover .footer-logo-image {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   BRAND NAME
+   ========================= */
+
+.footer-brand-name {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  line-height: 1;
+}
+
+
+/* Gandhi */
+
+.footer-brand-name h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 1.5rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* RO Water */
+
+.footer-brand-name h3 {
+  margin: 4px 0 4px;
+
+  color: #38bdf8;
+
+  font-size: 1.25rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* Enterprises */
+
+.footer-brand-name span {
+  color: #dbeafe;
+
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   BRAND DESCRIPTION
+   ========================= */
+
+.footer-brand > p {
+  max-width: 300px;
+
+  margin: 14px 0 0;
+
+  color: #bfdbfe;
+
+  font-size: 0.78rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================
+   WHATSAPP BUTTON
    ========================= */
 
 .footer-whatsapp {
+  margin-top: 15px;
+
+  padding: 9px 15px;
+
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
-  margin-top: 22px;
-  padding: 10px 16px;
+  gap: 6px;
 
-  border: 1px solid #334155;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
   border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.07);
 
   color: #ffffff;
 
   text-decoration: none;
 
-  font-size: 0.85rem;
+  font-size: 0.76rem;
+
   font-weight: 700;
 
   transition:
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-whatsapp:hover {
-  background: #1e293b;
-  border-color: #475569;
+  background: #16a34a;
+
+  border-color: #16a34a;
+
+  transform: translateY(-2px);
 }
 
+
 /* =========================
-   Footer Columns
+   FOOTER COLUMNS
    ========================= */
 
 .footer-column {
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-start;
 }
 
+
+/* =========================
+   COLUMN HEADING
+   ========================= */
+
 .footer-column h3 {
-  margin-bottom: 18px;
+  margin: 0 0 14px;
 
   color: #ffffff;
 
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.86rem;
+
+  font-weight: 800;
 }
 
-.footer-column a {
-  margin-bottom: 11px;
 
-  color: #94a3b8;
+/* Small blue line */
+
+.footer-column h3::after {
+  content: "";
+
+  display: block;
+
+  width: 24px;
+  height: 2px;
+
+  margin-top: 6px;
+
+  border-radius: 2px;
+
+  background: #38bdf8;
+}
+
+
+/* =========================
+   FOOTER LINKS
+   ========================= */
+
+.footer-column a {
+  margin-bottom: 8px;
+
+  color: #bfdbfe;
 
   text-decoration: none;
 
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.77rem;
 
-  transition: color 0.2s ease;
+  line-height: 1.45;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-column a:hover {
-  color: #38bdf8;
+  color: #ffffff;
+
+  transform: translateX(3px);
 }
 
-.footer-column p {
-  margin-bottom: 14px;
-
-  color: #94a3b8;
-
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.footer-column p strong {
-  color: #e2e8f0;
-  font-weight: 600;
-}
-
-.footer-note {
-  margin-top: 2px;
-
-  color: #64748b !important;
-
-  font-size: 0.78rem !important;
-}
 
 /* =========================
-   Footer Bottom
+   FOOTER TEXT
+   ========================= */
+
+.footer-column p {
+  margin: 0 0 10px;
+
+  color: #bfdbfe;
+
+  font-size: 0.76rem;
+
+  line-height: 1.55;
+}
+
+
+/* Bold timing */
+
+.footer-column p strong {
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   DELIVERY NOTE
+   ========================= */
+
+.footer-note {
+  margin-top: 2px !important;
+
+  color: #93c5fd !important;
+
+  font-size: 0.68rem !important;
+
+  line-height: 1.45 !important;
+}
+
+
+/* =========================
+   BOTTOM FOOTER
    ========================= */
 
 .footer-bottom {
-  border-top: 1px solid #1e293b;
+  width: 100%;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(0, 0, 0, 0.1);
 }
 
+
 .footer-bottom-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1150px;
+
   margin: 0 auto;
-  padding: 20px 24px;
+
+  padding: 13px 24px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
 }
 
-.footer-bottom p {
-  color: #64748b;
 
-  font-size: 0.75rem;
-  line-height: 1.5;
+.footer-bottom p {
+  margin: 0;
+
+  color: #93a4b8;
+
+  font-size: 0.67rem;
+
+  line-height: 1.4;
 }
 
+
 /* =========================
-   Tablet
+   TABLET
    ========================= */
 
 @media (max-width: 900px) {
+
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+
+    gap: 32px;
+
+    padding:
+      38px
+      24px
+      30px;
   }
 
   .footer-brand {
@@ -198,57 +378,187 @@
   }
 }
 
+
 /* =========================
-   Mobile
+   MOBILE
    ========================= */
 
 @media (max-width: 600px) {
+
   .footer-container {
-    padding: 55px 18px 40px;
+    padding:
+      34px
+      18px
+      28px;
 
     grid-template-columns: 1fr;
 
-    gap: 35px;
+    gap: 25px;
   }
 
-  .footer-brand {
-    max-width: 100%;
+
+  /* Logo */
+
+  .footer-logo-image {
+    width: 82px;
+    height: 82px;
+
+    flex-basis: 82px;
   }
+
+
+  /* Brand */
+
+  .footer-brand-name h2 {
+    font-size: 1.25rem;
+  }
+
+  .footer-brand-name h3 {
+    font-size: 1.08rem;
+  }
+
+  .footer-brand-name span {
+    font-size: 0.55rem;
+  }
+
+
+  /* Description */
+
+  .footer-brand > p {
+    max-width: 340px;
+
+    margin-top: 11px;
+
+    font-size: 0.75rem;
+
+    line-height: 1.55;
+  }
+
+
+  /* WhatsApp */
+
+  .footer-whatsapp {
+    margin-top: 13px;
+
+    padding: 8px 13px;
+
+    font-size: 0.74rem;
+  }
+
+
+  /* Columns */
 
   .footer-column h3 {
-    margin-bottom: 14px;
+    margin-bottom: 11px;
+
+    font-size: 0.8rem;
   }
 
+  .footer-column a {
+    margin-bottom: 6px;
+
+    font-size: 0.74rem;
+  }
+
+  .footer-column p {
+    font-size: 0.74rem;
+
+    line-height: 1.5;
+  }
+
+
+  /* Bottom */
+
   .footer-bottom-container {
-    padding: 18px;
+    padding:
+      12px
+      18px;
 
     flex-direction: column;
-    align-items: flex-start;
 
-    gap: 5px;
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 4px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.63rem;
   }
 }
 
+
 /* =========================
-   Very Small Phones
+   SMALL MOBILE
    ========================= */
 
 @media (max-width: 380px) {
+
   .footer-container {
     padding-left: 15px;
     padding-right: 15px;
+
+    gap: 22px;
   }
 
-  .footer-logo span {
-    font-size: 1.1rem;
+
+  .footer-logo-image {
+    width: 75px;
+    height: 75px;
+
+    flex-basis: 75px;
   }
+
+
+  .footer-brand-name h2 {
+    font-size: 1.15rem;
+  }
+
+  .footer-brand-name h3 {
+    font-size: 1rem;
+  }
+
+  .footer-brand-name span {
+    font-size: 0.5rem;
+  }
+
 
   .footer-brand > p {
-    font-size: 0.84rem;
+    font-size: 0.72rem;
   }
+
+
+  .footer-column a,
+  .footer-column p {
+    font-size: 0.71rem;
+  }
+
 
   .footer-bottom-container {
     padding-left: 15px;
     padding-right: 15px;
+  }
+}
+
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer-logo-image,
+  .footer-whatsapp,
+  .footer-column a {
+    transition: none;
+  }
+
+  .footer-logo:hover .footer-logo-image,
+  .footer-whatsapp:hover,
+  .footer-column a:hover {
+    transform: none;
   }
 }

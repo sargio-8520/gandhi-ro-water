@@ -8,13 +8,21 @@ function Footer() {
         {/* Business Information */}
         <div className="footer-brand">
           <a href="#home" className="footer-logo">
-            <span>GANDHI RO</span>
-            <small>WATER ENTERPRISES</small>
+            <img
+              src="/images/gallery/gro.png"
+              alt="Gandhi RO Water Enterprises"
+              className="footer-logo-image"
+            />
+            <div className="footer-brand-name">
+              <h2>Gandhi</h2>
+              <h3>RO Water</h3>
+              <span>— Enterprises —</span>
+            </div>
           </a>
 
           <p>
-            Quality RO purified drinking water for homes, shops,
-            businesses, events and functions in Rajapakar and nearby areas.
+            Pure RO water for homes, shops, offices,
+            events and functions in Rajapakar.
           </p>
 
           <a
@@ -32,9 +40,7 @@ function Footer() {
           <h3>Quick Links</h3>
 
           <a href="#home">Home</a>
-          <a href="#about">About Us</a>
           <a href="#products">Products</a>
-          <a href="#process">Our Process</a>
           <a href="#contact">Contact</a>
         </div>
 
@@ -55,13 +61,15 @@ function Footer() {
           </a>
 
           <p>
-            📍 Rajapakar Banghara,<br />
-            Rajapakar, Vaishali,<br />
+            📍 Rajapakar Banghara,
+            <br />
+            Rajapakar, Vaishali,
+            <br />
             Bihar - 844124
           </p>
         </div>
 
-        {/* Business Hours */}
+        {/* Delivery Hours */}
         <div className="footer-column">
           <h3>Delivery Hours</h3>
 
@@ -89,7 +97,6 @@ function Footer() {
         <div className="footer-bottom-container">
           <p>
             © {new Date().getFullYear()} Gandhi RO Water Enterprises.
-            All rights reserved.
           </p>
 
           <p>

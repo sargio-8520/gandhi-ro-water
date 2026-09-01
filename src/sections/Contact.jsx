@@ -2,112 +2,61 @@ import "./Contact.css";
 
 const phoneNumber = "918521836703";
 
-function Contact() {
-  const whatsappMessage = encodeURIComponent(
-    "Hello Gandhi RO Water Enterprises, I would like to enquire about RO water."
-  );
+const whatsappMessage = encodeURIComponent(
+  "Hello Gandhi RO Water Enterprises, I would like to order RO water."
+);
 
+function Contact() {
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
 
-        <div className="contact-heading">
-          <p className="section-eyebrow">CONTACT US</p>
+        {/* Delivery Areas */}
+        <div className="contact-block delivery-block">
+          <div className="contact-icon">🏢</div>
 
-          <h2>
-            Need water?
-            <span> We're here to help.</span>
-          </h2>
+          <div className="contact-text">
+            <h2>Delivery Areas</h2>
 
-          <p>
-            Order drinking water, enquire about delivery, or contact us
-            for your event and function water requirements.
-          </p>
+            <h5>
+              Rajapakar <span>•</span> Vaishali <span>•</span> Nearby Areas
+            </h5>
+          </div>
         </div>
 
-        <div className="contact-grid">
-
-          <div className="contact-info">
-
-            <a
-              href={`tel:+${phoneNumber}`}
-              className="contact-card"
-            >
-              <div className="contact-icon">📞</div>
-
-              <div>
-                <span>CALL US</span>
-                <h3>8521836703</h3>
-                <p>Speak directly with us</p>
-              </div>
-            </a>
-
-            <a
-              href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noreferrer"
-              className="contact-card"
-            >
-              <div className="contact-icon">💬</div>
-
-              <div>
-                <span>WHATSAPP</span>
-                <h3>Chat With Us</h3>
-                <p>Order or enquire through WhatsApp</p>
-              </div>
-            </a>
-
-            <div className="contact-card">
-              <div className="contact-icon">📍</div>
-
-              <div>
-                <span>OUR LOCATION</span>
-                <h3>Rajapakar</h3>
-                <p>
-                  Rajapakar Banghara, Rajapakar,
-                  Vaishali, Bihar - 844124
-                </p>
-              </div>
-            </div>
-
+        {/* WhatsApp */}
+        <div className="contact-block whatsapp-block">
+          <div className="whatsapp-text">
+            <h2>Need Water Supply?</h2>
+            
+            <h3>Order on WhatsApp</h3>
           </div>
 
-          <div className="contact-action">
-
-            <div className="contact-action-icon">
-              💧
-            </div>
-
-            <h3>
-              Order your water
-              <br />
-              with just a message.
-            </h3>
-
-            <p>
-              Tell us what you need and we'll help you with your
-              water order or delivery enquiry.
-            </p>
-
-            <a
-              href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noreferrer"
-              className="whatsapp-button"
-            >
-              💬 Order on WhatsApp
-            </a>
-
-            <a
-              href={`tel:+${phoneNumber}`}
-              className="call-button"
-            >
-              📞 Call 8521836703
-            </a>
-
-          </div>
-
+          <a
+            href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noreferrer"
+            className="whatsapp-contact-button"
+          >
+            <span className="whatsapp-icon">💬</span>
+            <strong>8521836703</strong>
+          </a>
         </div>
+
+        {/* G-RO Logo */}
+        <div className="contact-block brand-block">
+          <img
+            src="/images/gallery/gro.png"
+            alt=" Gandhi RO Water"
+            className="contact-logo"
+          />
+          <div className="contact-brand-text">
+            <h2>Gandhi</h2>
+            <strong>RO Water</strong>
+            <span>— Enterprises —</span>
+          </div>
+        </div>
+        
 
       </div>
     </section>

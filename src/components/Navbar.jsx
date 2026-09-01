@@ -22,7 +22,7 @@ function Navbar() {
           />
 
           <div className="brand-text">
-            <span className="brand-name">Gandhi</span>
+            <span className="brand-name">GANDHI</span>
             <span className="brand-ro">RO Water</span>
             <span className="brand-sub">Enterprises</span>
           </div>
