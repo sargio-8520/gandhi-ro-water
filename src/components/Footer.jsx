@@ -41,6 +41,8 @@ function Footer() {
 
           <a href="#home">Home</a>
           <a href="#products">Products</a>
+          <a href="#order">Order Water</a>
+          <a href="#whychooseus">Why Choose Us</a>
           <a href="#contact">Contact</a>
         </div>
 
