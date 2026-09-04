@@ -4,21 +4,21 @@ const products = [
   {
     image: "/images/gallery/20l-jar.png",
     name: "20L RO Water Jar",
-    description: "Perfect for home, office & businesses",
+    
     price: "₹20",
     unit: "per jar",
   },
   {
     image: "/images/gallery/1l-bottle.png",
     name: "1L Water Bottle",
-    description: "Convenient for daily use",
+    
     price: "₹15",
     unit: "per bottle",
   },
   {
     image: "/images/gallery/500ml-bottle.png",
     name: "500ml Water Bottle",
-    description: "Lightweight & easy to carry",
+    
     price: "₹8",
     unit: "per bottle",
   },
@@ -29,8 +29,7 @@ const bulkProducts = [
     image: "/images/gallery/500l-tank.png",
     label: "500L BULK WATER",
     name: "500L RO Water Tank",
-    description:
-      "Bulk RO water supply for events, functions and large requirements.",
+    
     price: "₹450",
     unit: "per 500L",
   },
@@ -38,8 +37,7 @@ const bulkProducts = [
     image: "/images/gallery/event_function.png",
     label: "1000L BULK WATER",
     name: "Event & Function Water",
-    description:
-      "RO water supply for weddings, parties, functions and events.",
+    
     price: "₹800",
     unit: "per 1000L",
   },

@@ -6,50 +6,54 @@ const products = [
     id: "20l-jar",
     image: "/images/gallery/20l-jar.png",
     name: "20L RO Water Jar",
+   
     price: 20,
     unit: "per jar",
-    description: "For home, office & shops.",
   },
   {
     id: "1l-bottle",
     image: "/images/gallery/1l-bottle.png",
     name: "1L Water Bottle",
+    
     price: 15,
     unit: "per bottle",
-    description: "For daily use & travel.",
   },
   {
     id: "500ml-bottle",
     image: "/images/gallery/500ml-bottle.png",
     name: "500ml Water Bottle",
+    
     price: 8,
     unit: "per bottle",
-    description: "Easy to carry.",
   },
   {
     id: "500l-event",
     image: "/images/gallery/500l-tank.png",
     name: "500L Small Event Water",
+    
     price: 450,
     unit: "per 500L",
-    description: "For small events.",
   },
   {
     id: "1000l-event",
     image: "/images/gallery/event_function.png",
     name: "1000L Event Water",
+    
     price: 800,
     unit: "per 1000L",
-    description: "For parties & functions.",
   },
 ];
 
 function Order() {
-  const [quantities, setQuantities] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [quantities, setQuantities] = useState({
+    "20l-jar": 0,
+    "1l-bottle": 0,
+    "500ml-bottle": 0,
+    "500l-event": 0,
+    "1000l-event": 0,
+  });
 
-  const [customerDetails, setCustomerDetails] = useState({
+  const [customer, setCustomer] = useState({
     name: "",
     phone: "",
     area: "",
@@ -58,216 +62,171 @@ function Order() {
   });
 
   const [errors, setErrors] = useState({});
+  const [productsError, setProductsError] = useState("");
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
-  // -----------------------------
-  // Customer Details
-  // -----------------------------
+  const updateQuantity = (id, value) => {
+    const quantity = Math.max(0, Number(value) || 0);
 
-  const handleCustomerDetailsChange = (event) => {
-    const { name, value } = event.target;
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: quantity,
+    }));
 
-    setCustomerDetails((previous) => ({
-      ...previous,
+    if (quantity > 0) {
+      setProductsError("");
+    }
+
+    setOrderPlaced(false);
+  };
+
+  const increaseQuantity = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: prev[id] + 1,
+    }));
+
+    setProductsError("");
+    setOrderPlaced(false);
+  };
+
+  const decreaseQuantity = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: Math.max(0, prev[id] - 1),
+    }));
+
+    setOrderPlaced(false);
+  };
+
+  const handleCustomerChange = (e) => {
+    const { name, value } = e.target;
+
+    setCustomer((prev) => ({
+      ...prev,
       [name]: value,
     }));
 
-    setErrors((previous) => ({
-      ...previous,
+    setErrors((prev) => ({
+      ...prev,
       [name]: "",
     }));
+
+    setOrderPlaced(false);
   };
-
-  // -----------------------------
-  // Quantity Controls
-  // -----------------------------
-
-  const increaseQuantity = (productId) => {
-    setQuantities((previous) => ({
-      ...previous,
-      [productId]: Number(previous[productId] || 0) + 1,
-    }));
-
-    setErrors((previous) => ({
-      ...previous,
-      products: "",
-    }));
-  };
-
-  const decreaseQuantity = (productId) => {
-    setQuantities((previous) => ({
-      ...previous,
-      [productId]: Math.max(
-        0,
-        Number(previous[productId] || 0) - 1
-      ),
-    }));
-  };
-
-  const handleQuantityChange = (productId, value) => {
-    if (value === "") {
-      setQuantities((previous) => ({
-        ...previous,
-        [productId]: "",
-      }));
-      return;
-    }
-
-    if (!/^\d+$/.test(value)) {
-      return;
-    }
-
-    setQuantities((previous) => ({
-      ...previous,
-      [productId]: Number(value),
-    }));
-
-    setErrors((previous) => ({
-      ...previous,
-      products: "",
-    }));
-  };
-
-  const handleQuantityBlur = (productId) => {
-    setQuantities((previous) => ({
-      ...previous,
-      [productId]:
-        previous[productId] === "" ||
-        previous[productId] === undefined
-          ? 0
-          : previous[productId],
-    }));
-  };
-
-  // -----------------------------
-  // Selected Products
-  // -----------------------------
 
   const selectedProducts = products.filter(
-    (product) =>
-      Number(quantities[product.id] || 0) > 0
+    (product) => quantities[product.id] > 0
+  );
+
+  const totalItems = selectedProducts.reduce(
+    (total, product) => total + quantities[product.id],
+    0
   );
 
   const grandTotal = selectedProducts.reduce(
     (total, product) =>
-      total +
-      product.price *
-        Number(quantities[product.id] || 0),
+      total + quantities[product.id] * product.price,
     0
   );
-
-  // -----------------------------
-  // Validation
-  // -----------------------------
 
   const validateOrder = () => {
     const newErrors = {};
 
-    const name = customerDetails.name.trim();
-    const phone = customerDetails.phone.trim();
-    const area = customerDetails.area.trim();
-    const address = customerDetails.address.trim();
+    if (!customer.name.trim()) {
+      newErrors.name = "Please enter your name.";
+    }
+
+    if (!customer.phone.trim()) {
+      newErrors.phone = "Please enter your phone number.";
+    } else if (!/^[0-9+\-\s]{10,15}$/.test(customer.phone.trim())) {
+      newErrors.phone = "Please enter a valid phone number.";
+    }
+
+    if (!customer.area.trim()) {
+      newErrors.area = "Please enter your area.";
+    }
+
+    if (!customer.address.trim()) {
+      newErrors.address = "Please enter your delivery address.";
+    }
 
     if (selectedProducts.length === 0) {
-      newErrors.products =
-        "Select at least one product.";
-    }
-
-    if (!name) {
-      newErrors.name = "Enter your name.";
-    } else if (name.length < 2) {
-      newErrors.name = "Enter a valid name.";
-    }
-
-    if (!phone) {
-      newErrors.phone =
-        "Enter your phone number.";
-    } else if (!/^\d{10}$/.test(phone)) {
-      newErrors.phone =
-        "Enter a valid 10-digit number.";
-    }
-
-    if (!area) {
-      newErrors.area = "Enter your area.";
-    }
-
-    if (!address) {
-      newErrors.address =
-        "Enter your delivery address.";
-    } else if (address.length < 5) {
-      newErrors.address =
-        "Enter a complete address.";
+      setProductsError("Please select at least one product.");
+    } else {
+      setProductsError("");
     }
 
     setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
+    return (
+      Object.keys(newErrors).length === 0 &&
+      selectedProducts.length > 0
+    );
   };
 
-  // -----------------------------
-  // WhatsApp Order
-  // -----------------------------
-
   const orderOnWhatsApp = () => {
-    if (!validateOrder() || isSubmitting) {
+    if (!validateOrder()) {
       return;
     }
 
-    setIsSubmitting(true);
+    const productLines = selectedProducts
+      .map((product) => {
+        const quantity = quantities[product.id];
+        const total = quantity * product.price;
 
-    let message =
-      "Hello Gandhi RO Water Enterprises,\n\n" +
-      "I would like to order:\n\n";
+        return `${product.name}
+Quantity: ${quantity}
+Price: ₹${product.price} ${product.unit}
+Total: ₹${total}`;
+      })
+      .join("\n\n");
 
-    selectedProducts.forEach((product) => {
-      const quantity = Number(
-        quantities[product.id] || 0
-      );
+    const message = `Hello Gandhi RO Water Enterprises,
 
-      const itemTotal =
-        product.price * quantity;
+I would like to place an order.
 
-      message += `${product.name}\n`;
-      message += `Quantity: ${quantity}\n`;
-      message += `Price: ₹${itemTotal}\n\n`;
-    });
-
-    message += `Grand Total: ₹${grandTotal}\n\n`;
-
-    message += "Customer Details:\n";
-    message += `Name: ${customerDetails.name.trim()}\n`;
-    message += `Phone: ${customerDetails.phone.trim()}\n`;
-    message += `Area: ${customerDetails.area.trim()}\n`;
-    message += `Address: ${customerDetails.address.trim()}\n`;
-
-    if (customerDetails.note.trim()) {
-      message += `Note: ${customerDetails.note.trim()}\n`;
+CUSTOMER DETAILS
+Name: ${customer.name}
+Phone: ${customer.phone}
+Area: ${customer.area}
+Address: ${customer.address}${
+      customer.note.trim()
+        ? `\nNote: ${customer.note}`
+        : ""
     }
 
-    message +=
-      "\nPlease confirm my order.";
+ORDER DETAILS
+${productLines}
+
+Total Items: ${totalItems}
+Grand Total: ₹${grandTotal}
+
+Please confirm my order and delivery.`;
 
     const whatsappUrl =
       "https://wa.me/918521836703?text=" +
       encodeURIComponent(message);
+
+    setOrderPlaced(true);
 
     window.open(
       whatsappUrl,
       "_blank",
       "noopener,noreferrer"
     );
-
-    setOrderSubmitted(true);
-    setIsSubmitting(false);
   };
 
-  // -----------------------------
-  // New Order
-  // -----------------------------
+  const resetOrder = () => {
+    setQuantities({
+      "20l-jar": 0,
+      "1l-bottle": 0,
+      "500ml-bottle": 0,
+      "500l-event": 0,
+      "1000l-event": 0,
+    });
 
-  const startNewOrder = () => {
-    setQuantities({});
-
-    setCustomerDetails({
+    setCustomer({
       name: "",
       phone: "",
       area: "",
@@ -276,498 +235,366 @@ function Order() {
     });
 
     setErrors({});
-    setOrderSubmitted(false);
+    setProductsError("");
+    setOrderPlaced(false);
   };
-
-  // -----------------------------
-  // JSX
-  // -----------------------------
 
   return (
     <section className="order-section" id="order">
       <div className="order-container">
 
         {/* Heading */}
-
         <div className="order-heading">
-          <p className="section-eyebrow">
-            ORDER WATER
-          </p>
-
-          <h2>
-            Choose your{" "}
-            <span>water requirement.</span>
+          <h2 className="section-eyebrow">
+            Order Water
           </h2>
-
-          <p>
-            Select your water and quantity.
-          </p>
         </div>
 
         <div className="order-layout">
 
-          {/* Products */}
-
+          {/* ================= PRODUCTS ================= */}
           <div className="order-products">
 
-            {products.map((product) => {
-              const quantity =
-                quantities[product.id] ?? 0;
+            {products.map((product) => (
+              <div
+                className="order-product-card"
+                key={product.id}
+              >
+                <div className="order-product-top">
 
-              return (
-                <article
-                  className="order-product-card"
-                  key={product.id}
-                >
-                  <div className="order-product-top">
+                  <div className="order-product-icon">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="order-product-image"
+                    />
+                  </div>
 
-                    {/* Product Image */}
+                  <div className="order-product-info">
+                    <h3>{product.name}</h3>
+                    <p>{product.description}</p>
+                  </div>
 
-                    <div className="order-product-icon">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="order-product-image"
-                      />
-                    </div>
+                </div>
 
-                    <div className="order-product-info">
-                      <h3>{product.name}</h3>
+                <div className="order-product-bottom">
 
-                      <p>
-                        {product.description}
-                      </p>
-                    </div>
+                  <div className="order-product-price">
+                    <strong>₹{product.price}</strong>
+                    <span>{product.unit}</span>
+                  </div>
+
+                  <div className="quantity-control">
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        decreaseQuantity(product.id)
+                      }
+                      aria-label={`Decrease ${product.name} quantity`}
+                    >
+                      −
+                    </button>
+
+                    <input
+                      type="number"
+                      min="0"
+                      value={quantities[product.id]}
+                      onChange={(e) =>
+                        updateQuantity(
+                          product.id,
+                          e.target.value
+                        )
+                      }
+                      aria-label={`${product.name} quantity`}
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        increaseQuantity(product.id)
+                      }
+                      aria-label={`Increase ${product.name} quantity`}
+                    >
+                      +
+                    </button>
 
                   </div>
 
-                  <div className="order-product-bottom">
+                </div>
+              </div>
+            ))}
 
-                    <div className="order-product-price">
-                      <strong>
-                        ₹{product.price}
-                      </strong>
-
-                      <span>
-                        {product.unit}
-                      </span>
-                    </div>
-
-                    <div className="quantity-control">
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          decreaseQuantity(
-                            product.id
-                          )
-                        }
-                        aria-label={`Decrease ${product.name}`}
-                      >
-                        −
-                      </button>
-
-                      <input
-                        type="number"
-                        min="0"
-                        step="1"
-                        value={quantity}
-                        onChange={(event) =>
-                          handleQuantityChange(
-                            product.id,
-                            event.target.value
-                          )
-                        }
-                        onBlur={() =>
-                          handleQuantityBlur(
-                            product.id
-                          )
-                        }
-                        aria-label={`${product.name} quantity`}
-                      />
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          increaseQuantity(
-                            product.id
-                          )
-                        }
-                        aria-label={`Increase ${product.name}`}
-                      >
-                        +
-                      </button>
-
-                    </div>
-
-                  </div>
-                </article>
-              );
-            })}
-
-            {errors.products && (
-              <p className="products-error">
-                {errors.products}
-              </p>
+            {productsError && (
+              <div className="products-error">
+                {productsError}
+              </div>
             )}
 
-            {/* Delivery Types */}
-
-            <div className="order-delivery-types">
-
-              <div>
-                <span>⌂</span>
-                <strong>Home</strong>
-                <small>Delivery</small>
-              </div>
-
-              <div>
-                <span>▦</span>
-                <strong>Office</strong>
-                <small>Supply</small>
-              </div>
-
-              <div>
-                <span>▣</span>
-                <strong>Shop</strong>
-                <small>Supply</small>
-              </div>
-
-              <div>
-                <span>▤</span>
-                <strong>Event</strong>
-                <small>Supply</small>
-              </div>
-
-            </div>
           </div>
 
-          {/* Delivery Details */}
-
+          {/* ================= CUSTOMER DETAILS ================= */}
           <div className="customer-details">
 
             <div className="customer-details-heading">
-
-              <p className="section-eyebrow">
-                DELIVERY DETAILS
-              </p>
-
-              <h3>
-                Where should we deliver?
-              </h3>
-
-              <p>
-                Enter your details to confirm
-                your order.
-              </p>
-
+              <h2 className="section-eyebrow">
+                CUSTOMER DETAILS
+              </h2>
             </div>
 
             <div className="customer-details-grid">
 
               {/* Name */}
-
               <div className="customer-field">
-
-                <label htmlFor="customer-name">
+                <label htmlFor="name">
                   Name <span>*</span>
                 </label>
 
                 <input
-                  id="customer-name"
+                  id="name"
                   type="text"
                   name="name"
-                  value={customerDetails.name}
-                  onChange={
-                    handleCustomerDetailsChange
-                  }
+                  value={customer.name}
+                  onChange={handleCustomerChange}
                   placeholder="Your name"
-                  autoComplete="name"
                   className={
-                    errors.name
-                      ? "input-error"
-                      : ""
+                    errors.name ? "input-error" : ""
                   }
                 />
 
                 {errors.name && (
-                  <p className="field-error">
+                  <div className="field-error">
                     {errors.name}
-                  </p>
+                  </div>
                 )}
-
               </div>
 
               {/* Phone */}
-
               <div className="customer-field">
-
-                <label htmlFor="customer-phone">
+                <label htmlFor="phone">
                   Phone <span>*</span>
                 </label>
 
                 <input
-                  id="customer-phone"
+                  id="phone"
                   type="tel"
                   name="phone"
-                  value={customerDetails.phone}
-                  onChange={(event) => {
-                    const value =
-                      event.target.value.replace(
-                        /\D/g,
-                        ""
-                      );
-
-                    if (value.length <= 10) {
-                      handleCustomerDetailsChange({
-                        target: {
-                          name: "phone",
-                          value,
-                        },
-                      });
-                    }
-                  }}
-                  placeholder="10-digit number"
-                  autoComplete="tel"
-                  inputMode="numeric"
-                  maxLength={10}
+                  value={customer.phone}
+                  onChange={handleCustomerChange}
+                  placeholder="8521836703"
                   className={
-                    errors.phone
-                      ? "input-error"
-                      : ""
+                    errors.phone ? "input-error" : ""
                   }
                 />
 
                 {errors.phone && (
-                  <p className="field-error">
+                  <div className="field-error">
                     {errors.phone}
-                  </p>
+                  </div>
                 )}
-
               </div>
 
               {/* Area */}
-
               <div className="customer-field">
-
-                <label htmlFor="customer-area">
+                <label htmlFor="area">
                   Area <span>*</span>
                 </label>
 
                 <input
-                  id="customer-area"
+                  id="area"
                   type="text"
                   name="area"
-                  value={customerDetails.area}
-                  onChange={
-                    handleCustomerDetailsChange
-                  }
-                  placeholder="Rajapakar Banghara"
-                  autoComplete="address-level2"
+                  value={customer.area}
+                  onChange={handleCustomerChange}
+                  placeholder="Rajapakar"
                   className={
-                    errors.area
-                      ? "input-error"
-                      : ""
+                    errors.area ? "input-error" : ""
                   }
                 />
 
                 {errors.area && (
-                  <p className="field-error">
+                  <div className="field-error">
                     {errors.area}
-                  </p>
+                  </div>
                 )}
-
               </div>
 
               {/* Address */}
-
               <div className="customer-field customer-field-full">
-
-                <label htmlFor="customer-address">
+                <label htmlFor="address">
                   Delivery Address <span>*</span>
                 </label>
 
-                <textarea
-                  id="customer-address"
+                <input
+                  id="address"
+                  type="text"
                   name="address"
-                  value={customerDetails.address}
-                  onChange={
-                    handleCustomerDetailsChange
-                  }
-                  placeholder="Complete delivery address"
-                  rows="2"
-                  autoComplete="street-address"
+                  value={customer.address}
+                  onChange={handleCustomerChange}
+                  placeholder="House / shop / office address"
                   className={
-                    errors.address
-                      ? "input-error"
-                      : ""
+                    errors.address ? "input-error" : ""
                   }
                 />
 
                 {errors.address && (
-                  <p className="field-error">
+                  <div className="field-error">
                     {errors.address}
-                  </p>
+                  </div>
                 )}
-
               </div>
 
               {/* Note */}
-
               <div className="customer-field customer-field-full">
-
-                <label htmlFor="customer-note">
-                  Note <span>(Optional)</span>
+                <label htmlFor="note">
+                  Note
                 </label>
 
                 <textarea
-                  id="customer-note"
+                  id="note"
                   name="note"
-                  value={customerDetails.note}
-                  onChange={
-                    handleCustomerDetailsChange
-                  }
-                  placeholder="Delivery note"
-                  rows="2"
+                  value={customer.note}
+                  onChange={handleCustomerChange}
+                  placeholder="Any special delivery instructions?"
                 />
-
               </div>
 
             </div>
 
-            {/* Order Summary */}
+            {/* ================= ORDER SUMMARY ================= */}
+            <div className="order-summary">
 
-            {selectedProducts.length > 0 && (
-              <div className="order-summary">
+              <div className="order-summary-header">
 
-                <div className="order-summary-header">
-
-                  <div>
-                    <p className="section-eyebrow">
-                      YOUR ORDER
-                    </p>
-
-                    <h3>
-                      Order Summary
-                    </h3>
+                <div>
+                  <div className="section-eyebrow">
+                    YOUR ORDER
                   </div>
 
-                  <span className="order-item-count">
-                    {selectedProducts.length} item
-                    {selectedProducts.length > 1
-                      ? "s"
-                      : ""}
-                  </span>
-
+                  <h3>Order Summary</h3>
                 </div>
 
-                <div className="order-summary-items">
-
-                  {selectedProducts.map(
-                    (product) => {
-                      const quantity = Number(
-                        quantities[product.id] || 0
-                      );
-
-                      const itemTotal =
-                        product.price * quantity;
-
-                      return (
-                        <div
-                          className="order-summary-item"
-                          key={product.id}
-                        >
-
-                          <div className="order-summary-product">
-
-                            {/* Product Image */}
-
-                            <span className="order-summary-icon">
-                              <img
-                                src={product.image}
-                                alt={product.name}
-                                className="order-summary-image"
-                              />
-                            </span>
-
-                            <div>
-                              <h4>
-                                {product.name}
-                              </h4>
-
-                              <p>
-                                {quantity} × ₹
-                                {product.price}
-                              </p>
-                            </div>
-
-                          </div>
-
-                          <strong>
-                            ₹{itemTotal}
-                          </strong>
-
-                        </div>
-                      );
-                    }
-                  )}
-
-                </div>
-
-                <div className="order-summary-total">
-                  <span>
-                    Grand Total
-                  </span>
-
-                  <strong>
-                    ₹{grandTotal}
-                  </strong>
-                </div>
-
-                <button
-                  type="button"
-                  className="order-whatsapp-button"
-                  onClick={orderOnWhatsApp}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting
-                    ? "Opening WhatsApp..."
-                    : "🛒 Place Order"}
-                </button>
-
-                {orderSubmitted && (
-                  <div className="order-success">
-
-                    <div className="order-success-icon">
-                      ✓
-                    </div>
-
-                    <div className="order-success-content">
-                      <h4>
-                        Order ready!
-                      </h4>
-
-                      <p>
-                        Send the WhatsApp message
-                        to confirm.
-                      </p>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="new-order-button"
-                      onClick={startNewOrder}
-                    >
-                      New Order
-                    </button>
-
-                  </div>
-                )}
+                <span className="order-item-count">
+                  {totalItems}{" "}
+                  {totalItems === 1
+                    ? "Item"
+                    : "Items"}
+                </span>
 
               </div>
-            )}
+
+              {/* Empty state */}
+              {selectedProducts.length === 0 ? (
+                <div className="order-summary-empty">
+                  Select products to see your order.
+                </div>
+              ) : (
+                <div className="order-summary-items">
+
+                  {selectedProducts.map((product) => {
+                    const quantity =
+                      quantities[product.id];
+
+                    const itemTotal =
+                      quantity * product.price;
+
+                    return (
+                      <div
+                        className="order-summary-item"
+                        key={product.id}
+                      >
+
+                        <div className="order-summary-product">
+
+                          <div className="order-summary-icon">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="order-summary-image"
+                            />
+                          </div>
+
+                          <div>
+                            <h4>
+                              {product.name}
+                            </h4>
+
+                            <p>
+                              {quantity} × ₹
+                              {product.price}
+                            </p>
+                          </div>
+
+                        </div>
+
+                        <strong>
+                          ₹{itemTotal}
+                        </strong>
+
+                      </div>
+                    );
+                  })}
+
+                </div>
+              )}
+
+              {/* Total */}
+              <div className="order-summary-total">
+                <span>Grand Total</span>
+                <strong>
+                  ₹{grandTotal}
+                </strong>
+              </div>
+
+              {/* WhatsApp button */}
+              <button
+                type="button"
+                className="order-whatsapp-button"
+                onClick={orderOnWhatsApp}
+                disabled={orderPlaced}
+              >
+                <span>💬</span>
+
+                {orderPlaced
+                  ? "Order Sent"
+                  : "Place Order on WhatsApp"}
+              </button>
+
+              {/* Success */}
+              {orderPlaced && (
+                <div className="order-success">
+
+                  <div className="order-success-icon">
+                    ✓
+                  </div>
+
+                  <div className="order-success-content">
+                    <h4>
+                      Order details prepared!
+                    </h4>
+
+                    <p>
+                      WhatsApp has been opened.
+                      Please send the message
+                      to confirm your order.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="new-order-button"
+                    onClick={resetOrder}
+                  >
+                    New Order
+                  </button>
+
+                </div>
+              )}
+
+            </div>
 
           </div>
+
         </div>
       </div>
     </section>

@@ -5,36 +5,31 @@ const processSteps = [
     number: "01",
     icon: "💧",
     title: "Raw Water",
-    description:
-      "Water enters the treatment system for the purification process.",
+    
   },
   {
     number: "02",
     icon: "🔄",
     title: "Filtration",
-    description:
-      "Initial filtration helps remove suspended particles and impurities.",
+   
   },
   {
     number: "03",
     icon: "💦",
     title: "RO Purification",
-    description:
-      "The water passes through the RO purification stage.",
+   
   },
   {
     number: "04",
     icon: "✓",
     title: "Quality Check",
-    description:
-      "The processed water is checked before it is prepared for delivery.",
+    
   },
   {
     number: "05",
     icon: "🫙",
     title: "Packaging",
-    description:
-      "Water is prepared in jars and bottles for customers and local delivery.",
+    
   },
 ];
 
