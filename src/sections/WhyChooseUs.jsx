@@ -17,7 +17,7 @@ const benefits = [
 
 function WhyChooseUs() {
   return (
-    <section className="why-section">
+    <section className="why-section" id="whychooseus">
       <div className="why-container">
 
         {/* Brand + Heading */}
@@ -44,7 +44,6 @@ function WhyChooseUs() {
           {benefits.map((benefit) => (
             <div className="why-benefit" key={benefit.title}>
               <div className="why-check">✓</div>
-
               <h3>{benefit.title}</h3>
             </div>
           ))}

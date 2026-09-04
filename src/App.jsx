@@ -1,14 +1,12 @@
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import SEO from "./components/SEO";
-
 import Hero from "./sections/Hero";
 import Products from "./sections/Products";
+import Order from "./components/Order";
 import WhyChooseUs from "./sections/WhyChooseUs";
 import Contact from "./sections/Contact";
-
+import Footer from "./components/Footer";
+import SEO from "./components/SEO";
 import "./App.css";
-import Order from "./components/Order";
 
 function App() {
   return (
@@ -21,7 +19,7 @@ function App() {
         <main>
           <Hero />
           <Products />
-          <Order/>
+          <Order />
           <WhyChooseUs />
           <Contact />
         </main>

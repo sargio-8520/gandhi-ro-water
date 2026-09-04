@@ -1,6 +1,6 @@
-/* ========================================
-   Global Reset
-   ======================================== */
+/* =========================================
+   GLOBAL RESET
+========================================= */
 
 * {
   margin: 0;
@@ -10,10 +10,11 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
+  margin: 0;
+
   font-family:
     Inter,
     -apple-system,
@@ -25,16 +26,10 @@ body {
   background: #ffffff;
 
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-
-  overflow-x: hidden;
 }
 
-/* ========================================
-   Form Elements
-   ======================================== */
-
+body,
 button,
 input,
 textarea,
@@ -42,84 +37,75 @@ select {
   font-family: inherit;
 }
 
-/* ========================================
-   Images
-   ======================================== */
+/* =========================================
+   IMAGES
+========================================= */
 
 img {
   display: block;
   max-width: 100%;
 }
 
-/* ========================================
-   Links & Buttons
-   ======================================== */
+/* =========================================
+   LINKS
+========================================= */
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  border: 0;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ========================================
-   Selection
-   ======================================== */
-
-::selection {
-  background: #bae6fd;
-  color: #0f172a;
-}
-
-/* ========================================
-   Main App
-   ======================================== */
+/* =========================================
+   APP
+========================================= */
 
 .app {
-  width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  background: #ffffff;
 }
 
-/* ========================================
-   Main Content
-   ======================================== */
+/* =========================================
+   MAIN
+========================================= */
 
 main {
   width: 100%;
-  overflow-x: hidden;
 }
 
-/* ========================================
-   Shared Section Eyebrow
-   ======================================== */
+/* =========================================
+   SECTIONS
+========================================= */
+
+section {
+  width: 100%;
+  scroll-margin-top: 70px;
+}
+
+/* =========================================
+   COMMON EYEBROW
+========================================= */
 
 .section-eyebrow {
+  margin-bottom: 8px;
+
   color: #0284c7;
 
   font-size: 0.7rem;
   font-weight: 800;
-
   letter-spacing: 0.14em;
   line-height: 1.4;
 
   text-transform: uppercase;
 }
 
-/* ========================================
-   Section Anchor Position
-   ======================================== */
-
-section {
-  scroll-margin-top: 80px;
-}
-
-/* ========================================
-   Accessibility Focus
-   ======================================== */
+/* =========================================
+   FOCUS ACCESSIBILITY
+========================================= */
 
 a:focus-visible,
 button:focus-visible,
@@ -130,47 +116,21 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-/* ========================================
-   Prevent Horizontal Overflow
-   ======================================== */
+/* =========================================
+   TEXT SELECTION
+========================================= */
 
-html,
-body,
-#root {
-  width: 100%;
-  max-width: 100%;
+::selection {
+  background: #bae6fd;
+  color: #0f172a;
 }
 
-/* ========================================
-   Mobile
-   ======================================== */
+/* =========================================
+   MOBILE
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 780px) {
   section {
-    scroll-margin-top: 75px;
-  }
-
-  .section-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-  }
-}
-
-/* ========================================
-   Reduced Motion
-   ======================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    scroll-margin-top: 64px;
   }
 }

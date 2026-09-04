@@ -14,7 +14,11 @@ function Navbar() {
       <div className="navbar-container">
 
         {/* Brand */}
-        <a href="#home" className="navbar-brand" onClick={closeMenu}>
+        <a
+          href="#home"
+          className="navbar-brand"
+          onClick={closeMenu}
+        >
           <img
             src={logo}
             alt="Gandhi RO Water Enterprises"
@@ -28,27 +32,27 @@ function Navbar() {
           </div>
         </a>
 
-        {/* Navigation */}
+        {/* Desktop Navigation */}
         <nav className="navbar-links">
           <a href="#home">Home</a>
           <a href="#products">Products</a>
           <a href="#order">Order Water</a>
-          <a href="#why-gandhi">Why Gandhi</a>
+          <a href="#whychooseus">Why Choose Us</a>
           <a href="#contact">Contact</a>
         </nav>
 
         {/* WhatsApp */}
         <a
           href="https://wa.me/918521836703"
+          className="navbar-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
-          className="navbar-whatsapp"
         >
           <span className="whatsapp-dot"></span>
           WhatsApp
         </a>
 
-        {/* Mobile Button */}
+        {/* Mobile Menu Button */}
         <button
           type="button"
           className="menu-toggle"
@@ -56,7 +60,7 @@ function Navbar() {
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >
-          <span>{menuOpen ? "✕" : "☰"}</span>
+          {menuOpen ? "✕" : "☰"}
         </button>
       </div>
 
@@ -76,8 +80,8 @@ function Navbar() {
             Order Water
           </a>
 
-          <a href="#why-gandhi" onClick={closeMenu}>
-            Why Gandhi
+          <a href="#whychooseus" onClick={closeMenu}>
+            Why Choose Us
           </a>
 
           <a href="#contact" onClick={closeMenu}>
@@ -86,9 +90,9 @@ function Navbar() {
 
           <a
             href="https://wa.me/918521836703"
+            className="mobile-whatsapp"
             target="_blank"
             rel="noopener noreferrer"
-            className="mobile-whatsapp"
             onClick={closeMenu}
           >
             <span className="whatsapp-dot"></span>
