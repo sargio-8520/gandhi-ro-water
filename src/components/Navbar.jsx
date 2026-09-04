@@ -14,11 +14,7 @@ function Navbar() {
       <div className="navbar-container">
 
         {/* Brand */}
-        <a
-          href="#home"
-          className="navbar-brand"
-          onClick={closeMenu}
-        >
+        <a href="#home" className="navbar-brand" onClick={closeMenu}>
           <img
             src={logo}
             alt="Gandhi RO Water Enterprises"
@@ -32,29 +28,27 @@ function Navbar() {
           </div>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Navigation */}
         <nav className="navbar-links">
           <a href="#home">Home</a>
-
           <a href="#products">Products</a>
-
-          <a href="#products">Bulk Supply</a>
-
+          <a href="#order">Order Water</a>
+          <a href="#why-gandhi">Why Gandhi</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        {/* WhatsApp Button */}
+        {/* WhatsApp */}
         <a
           href="https://wa.me/918521836703"
-          className="navbar-button"
           target="_blank"
           rel="noopener noreferrer"
+          className="navbar-whatsapp"
         >
-          <span className="whatsapp-icon">☏</span>
-          Order on WhatsApp
+          <span className="whatsapp-dot"></span>
+          WhatsApp
         </a>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           type="button"
           className="menu-toggle"
@@ -78,8 +72,12 @@ function Navbar() {
             Products
           </a>
 
-          <a href="#products" onClick={closeMenu}>
-            Bulk Supply
+          <a href="#order" onClick={closeMenu}>
+            Order Water
+          </a>
+
+          <a href="#why-gandhi" onClick={closeMenu}>
+            Why Gandhi
           </a>
 
           <a href="#contact" onClick={closeMenu}>
@@ -88,12 +86,12 @@ function Navbar() {
 
           <a
             href="https://wa.me/918521836703"
-            className="mobile-order-button"
             target="_blank"
             rel="noopener noreferrer"
+            className="mobile-whatsapp"
             onClick={closeMenu}
           >
-            <span className="whatsapp-icon">☏</span>
+            <span className="whatsapp-dot"></span>
             Order on WhatsApp
           </a>
 

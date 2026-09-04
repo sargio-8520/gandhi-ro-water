@@ -1,50 +1,44 @@
-/* =====================================================
+/* =========================================
    NAVBAR
-   ===================================================== */
+========================================= */
 
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 1000;
 
-  background: rgba(9, 55, 107, 0.4);
-  border-bottom: 1px solid #dbeafe;
+  width: 100%;
 
-  box-shadow: 0 4px 18px rgba(4, 9, 21, 0.06);
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #e5e7eb;
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-
-/* =====================================================
+/* =========================================
    NAVBAR CONTAINER
-   ===================================================== */
+========================================= */
 
 .navbar-container {
-  max-width: 1280px;
-  min-height: 82px;
+  width: min(1180px, calc(100% - 40px));
+  height: 68px;
 
   margin: 0 auto;
-  padding: 0 24px;
 
   display: flex;
   align-items: center;
-  gap: 24px;
 }
 
-
-/* =====================================================
+/* =========================================
    BRAND
-   ===================================================== */
+========================================= */
 
 .navbar-brand {
   display: flex;
   align-items: center;
-
-  gap: 8px;
+  gap: 9px;
 
   flex-shrink: 0;
 
@@ -52,159 +46,113 @@
 }
 
 .navbar-logo {
-  width: 76px;
-  height: 76px;
+  width: 150px;
+  height: 80px;
 
   object-fit: contain;
-  display: block;
-
-  flex-shrink: 0;
 }
-
-
-/* =====================================================
-   BRAND TEXT
-   ===================================================== */
 
 .brand-text {
   display: flex;
   flex-direction: column;
-
-  justify-content: center;
-
+  
   line-height: 1;
 }
 
 .brand-name {
-  color: #172554;
+  color: #075985;
 
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: 1.55rem;
-  font-weight: 800;
-
-  letter-spacing: -0.02em;
-
-  white-space: nowrap;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
 
 .brand-ro {
   margin-top: 3px;
 
-  color: #0369c9;
+  color: #0284c7;
 
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 1.28rem;
+  font-size: 1.0rem;
   font-weight: 800;
-
-  letter-spacing: -0.02em;
-
-  white-space: nowrap;
 }
 
 .brand-sub {
-  margin-top: 4px;
+  margin-top: 3px;
 
-  color: #172554;
+  color: #64748b;
 
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 0.55rem;
+  font-size: 0.8rem;
   font-weight: 700;
-
-  letter-spacing: 0.27em;
-
-  text-transform: uppercase;
-
-  white-space: nowrap;
+  letter-spacing: 0.1em;
 }
 
-
-/* =====================================================
-   DESKTOP NAVIGATION
-   ===================================================== */
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
 
 .navbar-links {
   margin-left: auto;
+  margin-right: 28px;
 
   display: flex;
   align-items: center;
-
-  gap: 22px;
+  gap: 28px;
 }
 
 .navbar-links a {
-  position: relative;
+  padding: 8px 0;
 
-  color: #172554;
+  color: #334155;
 
-  text-decoration: none;
-
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   font-weight: 700;
 
   white-space: nowrap;
+  text-decoration: none;
 
   transition:
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
+/* NO UNDERLINE */
+
 .navbar-links a::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -8px;
-
-  width: 0;
-  height: 2px;
-
-  border-radius: 20px;
-
-  background: #1479d1;
-
-  transition: width 0.2s ease;
+  display: none;
 }
 
 .navbar-links a:hover {
-  color: #1479d1;
+  color: #0284c7;
+  transform: translateY(-1px);
 }
 
-.navbar-links a:hover::after {
-  width: 100%;
-}
-
-
-/* =====================================================
+/* =========================================
    WHATSAPP BUTTON
-   ===================================================== */
+========================================= */
 
-.navbar-button {
-  min-height: 44px;
+.navbar-whatsapp {
+  height: 36px;
+
+  padding: 0 16px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 8px;
-
-  padding: 10px 18px;
 
   flex-shrink: 0;
 
-  border-radius: 24px;
-
-  background: #159447;
   color: #ffffff;
+  background: #16a34a;
+
+  border-radius: 999px;
+
+  font-size: 0.7rem;
+  font-weight: 800;
 
   text-decoration: none;
 
-  font-size: 0.82rem;
-  font-weight: 800;
-
-  box-shadow: 0 8px 18px rgba(21, 148, 71, 0.18);
+  box-shadow: 0 5px 14px rgba(22, 163, 74, 0.16);
 
   transition:
     background 0.2s ease,
@@ -212,219 +160,173 @@
     box-shadow 0.2s ease;
 }
 
-.navbar-button:hover {
-  background: #117a3b;
+.navbar-whatsapp:hover {
+  color: #ffffff;
+  background: #15803d;
 
   transform: translateY(-1px);
 
-  box-shadow: 0 11px 24px rgba(21, 148, 71, 0.25);
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.22);
 }
 
-.whatsapp-icon {
-  width: 22px;
-  height: 22px;
+.whatsapp-dot {
+  width: 8px;
+  height: 8px;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
 
-  border: 2px solid currentColor;
+  background: #ffffff;
+
   border-radius: 50%;
-
-  font-size: 0.75rem;
-  line-height: 1;
 }
 
-
-/* =====================================================
+/* =========================================
    MOBILE MENU BUTTON
-   ===================================================== */
+========================================= */
 
 .menu-toggle {
   display: none;
 
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
 
   margin-left: auto;
 
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #bfdbfe;
-  border-radius: 10px;
-
-  background: #eff6ff;
   color: #075985;
+  background: #ffffff;
 
-  font-size: 1.3rem;
-  font-weight: 700;
+  border: 1px solid #d7e2eb;
+  border-radius: 9px;
 
   cursor: pointer;
 
+  font-size: 1rem;
+  line-height: 1;
+
   transition:
     background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.2s ease;
 }
 
 .menu-toggle:hover {
-  background: #dbeafe;
-  border-color: #93c5fd;
-
-  transform: translateY(-1px);
+  background: #f0f9ff;
+  border-color: #bae6fd;
 }
 
-
-/* =====================================================
+/* =========================================
    MOBILE MENU
-   ===================================================== */
+========================================= */
 
 .mobile-menu {
-  position: absolute;
+  width: 100%;
 
-  top: 100%;
-  left: 0;
-  right: 0;
+  padding: 10px 20px 18px;
 
   display: flex;
   flex-direction: column;
+  gap: 2px;
 
-  padding: 14px 18px 20px;
+  background: #ffffff;
 
-  border-top: 1px solid #dbeafe;
-  border-bottom: 1px solid #dbeafe;
+  border-top: 1px solid #edf2f7;
 
-  background: rgba(255, 255, 255, 0.98);
-
-  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.1);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
 }
 
-
-/* Mobile links */
-
 .mobile-menu a {
-  padding: 13px 12px;
+  padding: 12px 10px;
 
-  border-radius: 9px;
+  color: #334155;
 
-  color: #172554;
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+  font-weight: 700;
 
   text-decoration: none;
 
-  font-size: 0.92rem;
-  font-weight: 700;
-
   transition:
-    background 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
 .mobile-menu a:hover {
-  background: #eff6ff;
-  color: #1479d1;
+  color: #0284c7;
+  background: #f0f9ff;
 }
 
+/* Mobile WhatsApp */
 
-/* Mobile WhatsApp button */
-
-.mobile-menu .mobile-order-button {
+.mobile-whatsapp {
   margin-top: 8px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 8px;
 
-  border-radius: 22px;
-
-  background: #159447;
-  color: #ffffff;
+  color: #ffffff !important;
+  background: #16a34a !important;
 
   text-align: center;
-
-  font-weight: 800;
 }
 
-.mobile-menu .mobile-order-button:hover {
-  background: #117a3b;
-  color: #ffffff;
+.mobile-whatsapp:hover {
+  color: #ffffff !important;
+  background: #15803d !important;
 }
 
-
-/* =====================================================
+/* =========================================
    TABLET
-   ===================================================== */
+========================================= */
 
-@media (max-width: 1100px) {
-  .navbar-container {
-    gap: 16px;
-  }
-
+@media (max-width: 950px) {
   .navbar-links {
-    gap: 15px;
+    gap: 18px;
+    margin-right: 18px;
   }
 
   .navbar-links a {
-    font-size: 0.77rem;
+    font-size: 0.7rem;
   }
 
-  .navbar-button {
-    padding: 9px 13px;
-
-    font-size: 0.75rem;
-  }
-
-  .brand-name {
-    font-size: 1.35rem;
-  }
-
-  .brand-ro {
-    font-size: 1.1rem;
-  }
-
-  .navbar-logo {
-    width: 68px;
-    height: 68px;
+  .navbar-whatsapp {
+    padding: 0 12px;
   }
 }
 
-
-/* =====================================================
+/* =========================================
    MOBILE
-   ===================================================== */
+========================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 780px) {
   .navbar-container {
-    min-height: 76px;
-
-    padding: 0 18px;
+    width: calc(100% - 28px);
+    height: 62px;
   }
 
   .navbar-logo {
-    width: 64px;
-    height: 64px;
+    width: 43px;
+    height: 43px;
   }
 
   .brand-name {
-    font-size: 1.2rem;
+    font-size: 0.82rem;
   }
 
   .brand-ro {
-    font-size: 1rem;
+    font-size: 0.65rem;
   }
 
   .brand-sub {
-    font-size: 0.5rem;
-    letter-spacing: 0.23em;
+    font-size: 0.46rem;
   }
 
   .navbar-links,
-  .navbar-button {
+  .navbar-whatsapp {
     display: none;
   }
 
@@ -433,40 +335,29 @@
   }
 }
 
-
-/* =====================================================
+/* =========================================
    SMALL MOBILE
-   ===================================================== */
+========================================= */
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
   .navbar-container {
-    padding: 0 14px;
-  }
-
-  .navbar-brand {
-    gap: 6px;
+    width: calc(100% - 20px);
   }
 
   .navbar-logo {
-    width: 54px;
-    height: 54px;
+    width: 40px;
+    height: 40px;
   }
 
   .brand-name {
-    font-size: 1rem;
+    font-size: 0.76rem;
   }
 
   .brand-ro {
-    font-size: 0.88rem;
+    font-size: 0.6rem;
   }
 
   .brand-sub {
-    font-size: 0.45rem;
-    letter-spacing: 0.19em;
-  }
-
-  .menu-toggle {
-    width: 40px;
-    height: 40px;
+    font-size: 0.42rem;
   }
 }
