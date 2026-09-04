@@ -2,40 +2,16 @@ import "./WhyChooseUs.css";
 
 const benefits = [
   {
-    icon: "📍",
-    title: "Local Rajapakar Service",
-    description:
-      "We serve customers in Rajapakar and nearby local areas.",
+    title: "Advanced RO Purification",
   },
   {
-    icon: "🚚",
-    title: "Free Local Delivery",
-    description:
-      "Get your water delivered to your home, shop, office or venue.",
+    title: "Quality Assured Water",
   },
   {
-    icon: "⚡",
-    title: "Same-Day Delivery",
-    description:
-      "Regular jar and bottle orders can be delivered on the same day.",
+    title: "Trusted by Local Community",
   },
   {
-    icon: "🚨",
-    title: "Emergency Delivery",
-    description:
-      "Need water urgently? Emergency delivery is available in our service area.",
-  },
-  {
-    icon: "📦",
-    title: "No Minimum Order",
-    description:
-      "There is no minimum quantity requirement for regular jar and bottle orders.",
-  },
-  {
-    icon: "🎉",
-    title: "Event & Function Supply",
-    description:
-      "Bulk RO water is available for parties, functions and other events.",
+    title: "Clean, Safe & Reliable Service",
   },
 ];
 
@@ -44,34 +20,32 @@ function WhyChooseUs() {
     <section className="why-section">
       <div className="why-container">
 
-        <div className="why-heading">
-          <p className="section-eyebrow">WHY CHOOSE US</p>
+        {/* Brand + Heading */}
+        <div className="why-brand">
+          <img
+            src="/images/gallery/gro.png"
+            alt="Gandhi RO Water"
+            className="why-logo"
+          />
 
-          <h2>
-            Water service built
-            <span> around you.</span>
-          </h2>
+          <div className="why-title">
+            <h2>
+              Why Choose
+              <br />
+              Gandhi RO Water?
+            </h2>
 
-          <p>
-            We make it convenient for local customers to get RO drinking
-            water when and where they need it.
-          </p>
+            <span className="why-title-line"></span>
+          </div>
         </div>
 
-        <div className="why-grid">
+        {/* Benefits */}
+        <div className="why-benefits">
           {benefits.map((benefit) => (
-            <div className="why-card" key={benefit.title}>
+            <div className="why-benefit" key={benefit.title}>
+              <div className="why-check">✓</div>
 
-              <div className="why-icon">
-                {benefit.icon}
-              </div>
-
-              <div>
-                <h3>{benefit.title}</h3>
-
-                <p>{benefit.description}</p>
-              </div>
-
+              <h3>{benefit.title}</h3>
             </div>
           ))}
         </div>

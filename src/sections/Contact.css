@@ -3,258 +3,439 @@
    ========================= */
 
 .contact-section {
-  width: 100%;
-  padding: 28px 24px;
-  background: #eef7ff;
-  border-top: 1px solid #cfe5f7;
-  border-bottom: 1px solid #cfe5f7;
+  padding: 42px 20px 48px;
+  background: #ffffff;
 }
 
 .contact-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1250px;
   margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  align-items: center;
 }
 
 /* =========================
-   Contact Blocks
+   Heading
    ========================= */
 
-.contact-block {
-  min-height: 92px;
+.contact-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  display: flex;
+.contact-heading span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #1683d8;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+.contact-heading h2 {
+  position: relative;
+
+  display: inline-block;
+
+  margin: 0;
+
+  padding-bottom: 8px;
+
+  color: #071b5b;
+
+  font-size: 1.65rem;
+  font-weight: 800;
+}
+
+.contact-heading h2::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 55px;
+  height: 3px;
+
+  transform: translateX(-50%);
+
+  border-radius: 10px;
+
+  background: #1999e8;
+}
+
+/* =========================
+   Main Four Column Bar
+   ========================= */
+
+.contact-bar {
+  position: relative;
+
+  min-height: 180px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr
+    1fr;
+
   align-items: center;
 
-  padding: 10px 34px;
+  overflow: hidden;
+
+  border: 1px solid #a9dcfa;
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #edf9ff 0%,
+      #ffffff 48%,
+      #eaf7ff 100%
+    );
+
+  box-shadow:
+    0 10px 28px rgba(15, 90, 150, 0.08);
 }
 
-/* VISIBLE SEPARATORS */
-.delivery-block {
-  border-right: 2px solid #b7d5ee;
+/* =========================
+   Subtle Water Decoration
+   ========================= */
+
+.contact-bar::before {
+  content: "";
+
+  position: absolute;
+
+  left: -50px;
+  bottom: -75px;
+
+  width: 330px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  border-top: 4px solid rgba(56, 178, 240, 0.22);
+
+  transform: rotate(-4deg);
+
+  pointer-events: none;
 }
 
-.whatsapp-block {
-  border-right: 2px solid #b7d5ee;
+.contact-bar::after {
+  content: "";
+
+  position: absolute;
+
+  right: -80px;
+  bottom: -80px;
+
+  width: 350px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  border-top: 4px solid rgba(56, 178, 240, 0.18);
+
+  transform: rotate(5deg);
+
+  pointer-events: none;
+}
+
+/* =========================
+   Four Columns
+   ========================= */
+
+.contact-column,
+.contact-brand {
+  position: relative;
+  z-index: 2;
+
+  min-height: 125px;
+
+  padding: 15px 22px;
+
+  display: flex;
 
   flex-direction: column;
+
+  align-items: center;
+
   justify-content: center;
+
   text-align: center;
 }
 
-/* =========================
-   Delivery
-   ========================= */
+/* Vertical Separators */
 
-.delivery-block {
-  gap: 16px;
+.contact-column:not(:last-of-type)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 18px;
+  right: 0;
+
+  width: 1px;
+  height: calc(100% - 36px);
+
+  background: #a8d9f5;
 }
 
-.contact-icon {
+/* =========================
+   Round Icons
+   ========================= */
+
+.contact-round-icon {
   width: 48px;
   height: 48px;
 
-  flex: 0 0 48px;
+  margin-bottom: 8px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border-radius: 50%;
 
-  background: #d9efff;
-  border: 1px solid #a9d5f5;
+  background: #1682d8;
 
-  color: #075985;
+  color: #ffffff;
 
-  font-size: 1.35rem;
+  font-size: 1.3rem;
 
-  box-shadow: 0 4px 12px rgba(7, 89, 133, 0.12);
+  box-shadow:
+    0 5px 12px rgba(22, 130, 216, 0.18);
 }
 
-.contact-text h2,
-.whatsapp-text h2 {
+.whatsapp-round {
+  background: #16a34a;
+
+  box-shadow:
+    0 5px 12px rgba(22, 163, 74, 0.18);
+}
+
+.shop-round {
+  background: #1677c8;
+}
+
+/* =========================
+   Column Text
+   ========================= */
+
+.contact-column h3 {
   margin: 0;
 
-  color: #0f172a;
+  color: #071b5b;
 
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 800;
+
+  line-height: 1.25;
 }
 
-.contact-text h5 {
-  margin: 7px 0 0;
+.contact-column p {
+  margin: 6px 0 0;
 
-  color: #475569;
+  color: #334155;
 
-  font-size: 0.82rem;
-  font-weight: 500;
-
+  font-size: 0.75rem;
   line-height: 1.5;
 }
 
-.contact-text h5 span {
-  color: #0284c7;
-  margin: 0 5px;
+.contact-column p b {
+  margin: 0 4px;
+
+  color: #1477ca;
 }
 
 /* =========================
    WhatsApp
    ========================= */
 
-.whatsapp-text h3 {
-  margin: 4px 0 9px;
+.whatsapp-label {
+  margin-top: 3px !important;
 
-  color: #64748b;
+  color: #475569 !important;
 
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.72rem !important;
 }
 
-.whatsapp-contact-button {
+.whatsapp-contact {
+  margin-top: 7px;
+
   min-width: 155px;
 
-  padding: 10px 18px;
+  padding: 8px 17px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
-  gap: 9px;
 
-  border-radius: 30px;
+  gap: 8px;
+
+  border-radius: 22px;
 
   background: #16a34a;
+
   color: #ffffff;
 
   text-decoration: none;
 
-  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.22);
+  font-size: 0.82rem;
+
+  box-shadow:
+    0 5px 13px rgba(22, 163, 74, 0.2);
 
   transition:
     transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.2s ease;
 }
 
-.whatsapp-contact-button:hover {
+.whatsapp-contact:hover {
   transform: translateY(-2px);
 
-  background: #15803d;
-
-  box-shadow: 0 9px 20px rgba(22, 163, 74, 0.28);
+  background: #12833d;
 }
 
-.whatsapp-contact-button strong {
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
+.whatsapp-contact span {
+  font-size: 1rem;
 }
 
-/* WhatsApp icon */
-
-.whatsapp-icon {
-  width: 23px;
-  height: 23px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-
-  font-size: 0.65rem;
-  line-height: 1;
+.whatsapp-contact strong {
+  font-size: 0.82rem;
 }
 
 /* =========================
-   Brand
+   Directions
    ========================= */
 
-.brand-block {
-  justify-content: center;
-  gap: 16px;
+.direction-button {
+  margin-top: 7px;
+
+  padding: 7px 14px;
+
+  border-radius: 18px;
+
+  background: #147bd2;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
-.contact-logo {
-  width: 78px;
-  height: 78px;
+.direction-button:hover {
+  transform: translateY(-2px);
+
+  background: #0965b3;
+}
+
+/* =========================
+   Brand Column
+   ========================= */
+
+.contact-brand {
+  flex-direction: row;
+
+  gap: 13px;
+
+  text-decoration: none;
+
+  border-left: 1px solid #a8d9f5;
+}
+
+.contact-brand img {
+  width: 70px;
+  height: 70px;
+
+  flex: 0 0 70px;
 
   object-fit: contain;
-
-  flex-shrink: 0;
 }
 
 .contact-brand-text {
   display: flex;
+
   flex-direction: column;
+
+  align-items: flex-start;
+
+  text-align: left;
+
+  line-height: 1;
 }
 
-.contact-brand-text h2 {
+.contact-brand-text h3 {
   margin: 0;
 
-  color: #172554;
+  color: #071b5b;
 
   font-size: 1.45rem;
-  line-height: 1;
   font-weight: 800;
 }
 
 .contact-brand-text strong {
   margin-top: 3px;
 
-  color: #1474d4;
+  color: #0874ce;
 
   font-size: 1.05rem;
-  line-height: 1.1;
+  font-weight: 800;
 }
 
 .contact-brand-text span {
-  margin-top: 4px;
+  margin-top: 5px;
 
   color: #334155;
 
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+
+  letter-spacing: 0.04em;
 }
 
 /* =========================
    Tablet
    ========================= */
 
-@media (max-width: 850px) {
-  .contact-section {
-    padding: 24px 18px;
+@media (max-width: 900px) {
+  .contact-bar {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .contact-block {
-    padding: 8px 20px;
+  .contact-column:nth-child(2) {
+    border-right: none;
   }
 
-  .contact-text h2,
-  .whatsapp-text h2 {
-    font-size: 1rem;
+  .contact-column:nth-child(1)::after,
+  .contact-column:nth-child(2)::after {
+    display: none;
   }
 
-  .contact-text h5 {
-    font-size: 0.76rem;
+  .contact-column:nth-child(1),
+  .contact-column:nth-child(2) {
+    border-bottom: 1px solid #a8d9f5;
   }
 
-  .contact-logo {
-    width: 68px;
-    height: 68px;
-  }
+  .contact-brand {
+    border-left: none;
 
-  .contact-brand-text h2 {
-    font-size: 1.25rem;
-  }
-
-  .contact-brand-text strong {
-    font-size: 0.95rem;
+    border-top: 1px solid #a8d9f5;
   }
 }
 
@@ -262,39 +443,110 @@
    Mobile
    ========================= */
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .contact-section {
-    padding: 22px 15px;
+    padding: 38px 14px 42px;
   }
 
-  .contact-container {
+  .contact-heading {
+    margin-bottom: 17px;
+  }
+
+  .contact-heading h2 {
+    font-size: 1.45rem;
+  }
+
+  .contact-bar {
     grid-template-columns: 1fr;
-  }
 
-  .contact-block {
     min-height: auto;
 
-    padding: 18px 10px;
-
-    justify-content: center;
+    border-radius: 14px;
   }
 
-  /* Change vertical separators to horizontal */
-  .delivery-block,
-  .whatsapp-block {
-    border-right: none;
-    border-bottom: 2px solid #b7d5ee;
+  .contact-column {
+    min-height: 105px;
+
+    padding: 16px 12px;
+
+    border-bottom: 1px solid #a8d9f5;
   }
 
-  .delivery-block {
-    justify-content: flex-start;
+  .contact-column::after {
+    display: none !important;
   }
 
-  .whatsapp-block {
-    padding: 20px 10px;
+  .contact-round-icon {
+    width: 40px;
+    height: 40px;
+
+    margin-bottom: 6px;
+
+    font-size: 1.1rem;
   }
 
-  .brand-block {
-    padding-top: 20px;
+  .contact-column h3 {
+    font-size: 0.95rem;
+  }
+
+  .contact-column p {
+    font-size: 0.72rem;
+  }
+
+  .whatsapp-contact {
+    margin-top: 6px;
+
+    padding: 7px 15px;
+
+    font-size: 0.78rem;
+  }
+
+  .contact-brand {
+    min-height: 105px;
+
+    padding: 15px;
+
+    border-left: none;
+  }
+
+  .contact-brand img {
+    width: 62px;
+    height: 62px;
+
+    flex-basis: 62px;
+  }
+
+  .contact-brand-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-brand-text strong {
+    font-size: 0.98rem;
+  }
+}
+
+/* =========================
+   Very Small Phones
+   ========================= */
+
+@media (max-width: 380px) {
+  .contact-section {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .contact-brand img {
+    width: 55px;
+    height: 55px;
+
+    flex-basis: 55px;
+  }
+
+  .contact-brand-text h3 {
+    font-size: 1.15rem;
+  }
+
+  .contact-brand-text strong {
+    font-size: 0.88rem;
   }
 }
