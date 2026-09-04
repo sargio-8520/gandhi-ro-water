@@ -4,7 +4,7 @@ import "./Order.css";
 const products = [
   {
     id: "20l-jar",
-    icon: "🫙",
+    image: "/images/gallery/20l-jar.png",
     name: "20L RO Water Jar",
     price: 20,
     unit: "per jar",
@@ -12,7 +12,7 @@ const products = [
   },
   {
     id: "1l-bottle",
-    icon: "💧",
+    image: "/images/gallery/1l-bottle.png",
     name: "1L Water Bottle",
     price: 15,
     unit: "per bottle",
@@ -20,7 +20,7 @@ const products = [
   },
   {
     id: "500ml-bottle",
-    icon: "💧",
+    image: "/images/gallery/500ml-bottle.png",
     name: "500ml Water Bottle",
     price: 8,
     unit: "per bottle",
@@ -28,7 +28,7 @@ const products = [
   },
   {
     id: "500l-event",
-    icon: "🎉",
+    image: "/images/gallery/500l-tank.png",
     name: "500L Small Event Water",
     price: 450,
     unit: "per 500L",
@@ -36,7 +36,7 @@ const products = [
   },
   {
     id: "1000l-event",
-    icon: "🚚",
+    image: "/images/gallery/event_function.png",
     name: "1000L Event Water",
     price: 800,
     unit: "per 1000L",
@@ -96,7 +96,10 @@ function Order() {
   const decreaseQuantity = (productId) => {
     setQuantities((previous) => ({
       ...previous,
-      [productId]: Math.max(0, Number(previous[productId] || 0) - 1),
+      [productId]: Math.max(
+        0,
+        Number(previous[productId] || 0) - 1
+      ),
     }));
   };
 
@@ -140,13 +143,15 @@ function Order() {
   // -----------------------------
 
   const selectedProducts = products.filter(
-    (product) => Number(quantities[product.id] || 0) > 0
+    (product) =>
+      Number(quantities[product.id] || 0) > 0
   );
 
   const grandTotal = selectedProducts.reduce(
     (total, product) =>
       total +
-      product.price * Number(quantities[product.id] || 0),
+      product.price *
+        Number(quantities[product.id] || 0),
     0
   );
 
@@ -163,7 +168,8 @@ function Order() {
     const address = customerDetails.address.trim();
 
     if (selectedProducts.length === 0) {
-      newErrors.products = "Select at least one product.";
+      newErrors.products =
+        "Select at least one product.";
     }
 
     if (!name) {
@@ -173,9 +179,11 @@ function Order() {
     }
 
     if (!phone) {
-      newErrors.phone = "Enter your phone number.";
+      newErrors.phone =
+        "Enter your phone number.";
     } else if (!/^\d{10}$/.test(phone)) {
-      newErrors.phone = "Enter a valid 10-digit number.";
+      newErrors.phone =
+        "Enter a valid 10-digit number.";
     }
 
     if (!area) {
@@ -183,9 +191,11 @@ function Order() {
     }
 
     if (!address) {
-      newErrors.address = "Enter your delivery address.";
+      newErrors.address =
+        "Enter your delivery address.";
     } else if (address.length < 5) {
-      newErrors.address = "Enter a complete address.";
+      newErrors.address =
+        "Enter a complete address.";
     }
 
     setErrors(newErrors);
@@ -209,8 +219,12 @@ function Order() {
       "I would like to order:\n\n";
 
     selectedProducts.forEach((product) => {
-      const quantity = Number(quantities[product.id] || 0);
-      const itemTotal = product.price * quantity;
+      const quantity = Number(
+        quantities[product.id] || 0
+      );
+
+      const itemTotal =
+        product.price * quantity;
 
       message += `${product.name}\n`;
       message += `Quantity: ${quantity}\n`;
@@ -229,13 +243,18 @@ function Order() {
       message += `Note: ${customerDetails.note.trim()}\n`;
     }
 
-    message += "\nPlease confirm my order.";
+    message +=
+      "\nPlease confirm my order.";
 
     const whatsappUrl =
       "https://wa.me/918521836703?text=" +
       encodeURIComponent(message);
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
 
     setOrderSubmitted(true);
     setIsSubmitting(false);
@@ -269,8 +288,11 @@ function Order() {
       <div className="order-container">
 
         {/* Heading */}
+
         <div className="order-heading">
-          <p className="section-eyebrow">ORDER WATER</p>
+          <p className="section-eyebrow">
+            ORDER WATER
+          </p>
 
           <h2>
             Choose your{" "}
@@ -285,10 +307,12 @@ function Order() {
         <div className="order-layout">
 
           {/* Products */}
+
           <div className="order-products">
 
             {products.map((product) => {
-              const quantity = quantities[product.id] ?? 0;
+              const quantity =
+                quantities[product.id] ?? 0;
 
               return (
                 <article
@@ -297,14 +321,22 @@ function Order() {
                 >
                   <div className="order-product-top">
 
+                    {/* Product Image */}
+
                     <div className="order-product-icon">
-                      {product.icon}
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="order-product-image"
+                      />
                     </div>
 
                     <div className="order-product-info">
                       <h3>{product.name}</h3>
 
-                      <p>{product.description}</p>
+                      <p>
+                        {product.description}
+                      </p>
                     </div>
 
                   </div>
@@ -312,8 +344,13 @@ function Order() {
                   <div className="order-product-bottom">
 
                     <div className="order-product-price">
-                      <strong>₹{product.price}</strong>
-                      <span>{product.unit}</span>
+                      <strong>
+                        ₹{product.price}
+                      </strong>
+
+                      <span>
+                        {product.unit}
+                      </span>
                     </div>
 
                     <div className="quantity-control">
@@ -321,7 +358,9 @@ function Order() {
                       <button
                         type="button"
                         onClick={() =>
-                          decreaseQuantity(product.id)
+                          decreaseQuantity(
+                            product.id
+                          )
                         }
                         aria-label={`Decrease ${product.name}`}
                       >
@@ -340,7 +379,9 @@ function Order() {
                           )
                         }
                         onBlur={() =>
-                          handleQuantityBlur(product.id)
+                          handleQuantityBlur(
+                            product.id
+                          )
                         }
                         aria-label={`${product.name} quantity`}
                       />
@@ -348,7 +389,9 @@ function Order() {
                       <button
                         type="button"
                         onClick={() =>
-                          increaseQuantity(product.id)
+                          increaseQuantity(
+                            product.id
+                          )
                         }
                         aria-label={`Increase ${product.name}`}
                       >
@@ -369,6 +412,7 @@ function Order() {
             )}
 
             {/* Delivery Types */}
+
             <div className="order-delivery-types">
 
               <div>
@@ -399,24 +443,32 @@ function Order() {
           </div>
 
           {/* Delivery Details */}
+
           <div className="customer-details">
 
             <div className="customer-details-heading">
+
               <p className="section-eyebrow">
                 DELIVERY DETAILS
               </p>
 
-              <h3>Where should we deliver?</h3>
+              <h3>
+                Where should we deliver?
+              </h3>
 
               <p>
-                Enter your details to confirm your order.
+                Enter your details to confirm
+                your order.
               </p>
+
             </div>
 
             <div className="customer-details-grid">
 
               {/* Name */}
+
               <div className="customer-field">
+
                 <label htmlFor="customer-name">
                   Name <span>*</span>
                 </label>
@@ -426,10 +478,16 @@ function Order() {
                   type="text"
                   name="name"
                   value={customerDetails.name}
-                  onChange={handleCustomerDetailsChange}
+                  onChange={
+                    handleCustomerDetailsChange
+                  }
                   placeholder="Your name"
                   autoComplete="name"
-                  className={errors.name ? "input-error" : ""}
+                  className={
+                    errors.name
+                      ? "input-error"
+                      : ""
+                  }
                 />
 
                 {errors.name && (
@@ -437,10 +495,13 @@ function Order() {
                     {errors.name}
                   </p>
                 )}
+
               </div>
 
               {/* Phone */}
+
               <div className="customer-field">
+
                 <label htmlFor="customer-phone">
                   Phone <span>*</span>
                 </label>
@@ -452,7 +513,10 @@ function Order() {
                   value={customerDetails.phone}
                   onChange={(event) => {
                     const value =
-                      event.target.value.replace(/\D/g, "");
+                      event.target.value.replace(
+                        /\D/g,
+                        ""
+                      );
 
                     if (value.length <= 10) {
                       handleCustomerDetailsChange({
@@ -467,7 +531,11 @@ function Order() {
                   autoComplete="tel"
                   inputMode="numeric"
                   maxLength={10}
-                  className={errors.phone ? "input-error" : ""}
+                  className={
+                    errors.phone
+                      ? "input-error"
+                      : ""
+                  }
                 />
 
                 {errors.phone && (
@@ -475,10 +543,13 @@ function Order() {
                     {errors.phone}
                   </p>
                 )}
+
               </div>
 
               {/* Area */}
+
               <div className="customer-field">
+
                 <label htmlFor="customer-area">
                   Area <span>*</span>
                 </label>
@@ -488,10 +559,16 @@ function Order() {
                   type="text"
                   name="area"
                   value={customerDetails.area}
-                  onChange={handleCustomerDetailsChange}
+                  onChange={
+                    handleCustomerDetailsChange
+                  }
                   placeholder="Rajapakar Banghara"
                   autoComplete="address-level2"
-                  className={errors.area ? "input-error" : ""}
+                  className={
+                    errors.area
+                      ? "input-error"
+                      : ""
+                  }
                 />
 
                 {errors.area && (
@@ -499,10 +576,13 @@ function Order() {
                     {errors.area}
                   </p>
                 )}
+
               </div>
 
               {/* Address */}
+
               <div className="customer-field customer-field-full">
+
                 <label htmlFor="customer-address">
                   Delivery Address <span>*</span>
                 </label>
@@ -511,12 +591,16 @@ function Order() {
                   id="customer-address"
                   name="address"
                   value={customerDetails.address}
-                  onChange={handleCustomerDetailsChange}
+                  onChange={
+                    handleCustomerDetailsChange
+                  }
                   placeholder="Complete delivery address"
                   rows="2"
                   autoComplete="street-address"
                   className={
-                    errors.address ? "input-error" : ""
+                    errors.address
+                      ? "input-error"
+                      : ""
                   }
                 />
 
@@ -525,10 +609,13 @@ function Order() {
                     {errors.address}
                   </p>
                 )}
+
               </div>
 
               {/* Note */}
+
               <div className="customer-field customer-field-full">
+
                 <label htmlFor="customer-note">
                   Note <span>(Optional)</span>
                 </label>
@@ -537,76 +624,104 @@ function Order() {
                   id="customer-note"
                   name="note"
                   value={customerDetails.note}
-                  onChange={handleCustomerDetailsChange}
+                  onChange={
+                    handleCustomerDetailsChange
+                  }
                   placeholder="Delivery note"
                   rows="2"
                 />
+
               </div>
 
             </div>
 
             {/* Order Summary */}
+
             {selectedProducts.length > 0 && (
               <div className="order-summary">
 
                 <div className="order-summary-header">
+
                   <div>
                     <p className="section-eyebrow">
                       YOUR ORDER
                     </p>
 
-                    <h3>Order Summary</h3>
+                    <h3>
+                      Order Summary
+                    </h3>
                   </div>
 
                   <span className="order-item-count">
                     {selectedProducts.length} item
-                    {selectedProducts.length > 1 ? "s" : ""}
+                    {selectedProducts.length > 1
+                      ? "s"
+                      : ""}
                   </span>
+
                 </div>
 
                 <div className="order-summary-items">
 
-                  {selectedProducts.map((product) => {
-                    const quantity = Number(
-                      quantities[product.id] || 0
-                    );
+                  {selectedProducts.map(
+                    (product) => {
+                      const quantity = Number(
+                        quantities[product.id] || 0
+                      );
 
-                    const itemTotal =
-                      product.price * quantity;
+                      const itemTotal =
+                        product.price * quantity;
 
-                    return (
-                      <div
-                        className="order-summary-item"
-                        key={product.id}
-                      >
-                        <div className="order-summary-product">
+                      return (
+                        <div
+                          className="order-summary-item"
+                          key={product.id}
+                        >
 
-                          <span className="order-summary-icon">
-                            {product.icon}
-                          </span>
+                          <div className="order-summary-product">
 
-                          <div>
-                            <h4>{product.name}</h4>
+                            {/* Product Image */}
 
-                            <p>
-                              {quantity} × ₹{product.price}
-                            </p>
+                            <span className="order-summary-icon">
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="order-summary-image"
+                              />
+                            </span>
+
+                            <div>
+                              <h4>
+                                {product.name}
+                              </h4>
+
+                              <p>
+                                {quantity} × ₹
+                                {product.price}
+                              </p>
+                            </div>
+
                           </div>
 
-                        </div>
+                          <strong>
+                            ₹{itemTotal}
+                          </strong>
 
-                        <strong>
-                          ₹{itemTotal}
-                        </strong>
-                      </div>
-                    );
-                  })}
+                        </div>
+                      );
+                    }
+                  )}
 
                 </div>
 
                 <div className="order-summary-total">
-                  <span>Grand Total</span>
-                  <strong>₹{grandTotal}</strong>
+                  <span>
+                    Grand Total
+                  </span>
+
+                  <strong>
+                    ₹{grandTotal}
+                  </strong>
                 </div>
 
                 <button
@@ -628,10 +743,13 @@ function Order() {
                     </div>
 
                     <div className="order-success-content">
-                      <h4>Order ready!</h4>
+                      <h4>
+                        Order ready!
+                      </h4>
 
                       <p>
-                        Send the WhatsApp message to confirm.
+                        Send the WhatsApp message
+                        to confirm.
                       </p>
                     </div>
 
@@ -650,11 +768,7 @@ function Order() {
             )}
 
           </div>
-
         </div>
-
-        
-
       </div>
     </section>
   );

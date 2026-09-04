@@ -102,46 +102,7 @@ function Hero() {
 
       </div>
 
-      {/* QUICK SERVICES */}
-      <div className="hero-services">
-
-        <div className="hero-service">
-          <span>▣</span>
-          <strong>20L Water</strong>
-          <small>Jars</small>
-        </div>
-
-        <div className="hero-service">
-          <span>▥</span>
-          <strong>1L Bottles</strong>
-          <small>Daily Use</small>
-        </div>
-
-        <div className="hero-service">
-          <span>▥</span>
-          <strong>500ml Bottles</strong>
-          <small>Easy Carry</small>
-        </div>
-
-        <div className="hero-service">
-          <span>▦</span>
-          <strong>Bulk Supply</strong>
-          <small>Businesses</small>
-        </div>
-
-        <div className="hero-service">
-          <span>♟</span>
-          <strong>Events</strong>
-          <small>& Functions</small>
-        </div>
-
-        <div className="hero-service">
-          <span>↗</span>
-          <strong>Timely</strong>
-          <small>Delivery</small>
-        </div>
-
-      </div>
+      
     </section>
   );
 }

@@ -24,6 +24,27 @@ const products = [
   },
 ];
 
+const bulkProducts = [
+  {
+    image: "/images/gallery/500l-tank.png",
+    label: "500L BULK WATER",
+    name: "500L RO Water Tank",
+    description:
+      "Bulk RO water supply for events, functions and large requirements.",
+    price: "₹450",
+    unit: "per 500L",
+  },
+  {
+    image: "/images/gallery/event_function.png",
+    label: "1000L BULK WATER",
+    name: "Event & Function Water",
+    description:
+      "RO water supply for weddings, parties, functions and events.",
+    price: "₹800",
+    unit: "per 1000L",
+  },
+];
+
 function Products() {
   return (
     <section className="products-section" id="products">
@@ -40,7 +61,6 @@ function Products() {
         <div className="products-grid">
           {products.map((product) => (
             <article className="product-card" key={product.name}>
-
               <div className="product-image-wrap">
                 <img
                   src={product.image}
@@ -59,41 +79,52 @@ function Products() {
                   <span>{product.unit}</span>
                 </div>
               </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Bulk Water Supply */}
+        <div className="bulk-heading">
+          <span></span>
+          <h2>Bulk Water Supply</h2>
+          <span></span>
+        </div>
+
+        <div className="bulk-grid">
+          {bulkProducts.map((product) => (
+            <article className="bulk-product" key={product.name}>
+
+              <div className="bulk-image-wrap">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="bulk-image"
+                />
+              </div>
+
+              <div className="bulk-info">
+                <p className="bulk-label">{product.label}</p>
+
+                <h3>{product.name}</h3>
+
+                <p className="bulk-description">
+                  {product.description}
+                </p>
+
+                <div className="bulk-price">
+                  <strong>{product.price}</strong>
+                  <span>{product.unit}</span>
+                </div>
+
+                <a href="#contact" className="bulk-button">
+                  Enquire Now
+                </a>
+              </div>
 
             </article>
           ))}
         </div>
 
-        {/* Event Water Supply */}
-        <article className="event-product">
-
-          <div className="event-image-wrap">
-            <img
-              src="/images/gallery/event_function.png"
-              alt="Event and Function Water Supply"
-            />
-          </div>
-
-          <div className="event-info">
-            <p className="event-label">BULK WATER SUPPLY</p>
-
-            <h3>Event & Function Water</h3>
-
-            <p>
-              RO water supply for weddings, parties, functions and events.
-            </p>
-
-            <div className="event-price">
-              <strong>₹800</strong>
-              <span>per 1000L</span>
-            </div>
-
-            <a href="#contact" className="event-button">
-              Enquire Now
-            </a>
-          </div>
-
-        </article>
         {/* Delivery Note */}
         <div className="delivery-note">
           <span>🚚</span>

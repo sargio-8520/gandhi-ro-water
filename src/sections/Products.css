@@ -8,7 +8,7 @@
 }
 
 .products-container {
-  max-width: 1180px;
+  width: min(1180px, 100%);
   margin: 0 auto;
 }
 
@@ -78,14 +78,13 @@
 }
 
 /* =========================
-   Regular Products Grid
+   Regular Products
+   3 Products in One Row
    ========================= */
 
 .products-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 12px;
 }
 
@@ -117,7 +116,7 @@
 
   border-color: #93c5fd;
 
-  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.10);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
 }
 
 /* =========================
@@ -126,7 +125,6 @@
 
 .product-image-wrap {
   width: 42%;
-
   height: 125px;
 
   flex-shrink: 0;
@@ -140,9 +138,9 @@
   width: 100%;
   height: 100%;
 
-  object-fit: contain;
-
   display: block;
+
+  object-fit: contain;
 }
 
 /* =========================
@@ -151,7 +149,6 @@
 
 .product-info {
   width: 58%;
-
   padding-left: 8px;
 }
 
@@ -182,7 +179,6 @@
 
 .product-price {
   display: flex;
-
   align-items: baseline;
 
   gap: 5px;
@@ -192,7 +188,6 @@
 
 .product-price strong {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
@@ -214,21 +209,66 @@
   color: #475569;
 
   font-size: 0.65rem;
-
   font-weight: 600;
 }
 
 /* =========================
-   Event & Function Supply
+   Bulk Heading
    ========================= */
 
-.event-product {
+.bulk-heading {
   display: flex;
   align-items: center;
 
-  width: 100%;
+  gap: 12px;
 
-  margin-top: 12px;
+  margin: 22px 0 12px;
+}
+
+.bulk-heading span {
+  flex: 1;
+
+  height: 1px;
+
+  background: #bfdbfe;
+}
+
+.bulk-heading h2 {
+  margin: 0;
+
+  color: #075985;
+
+  font-size: 0.85rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+/* =========================
+   Bulk Products
+   500L + 1000L
+   ========================= */
+
+.bulk-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+/* =========================
+   Bulk Product Card
+   ========================= */
+
+.bulk-product {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
 
   overflow: hidden;
 
@@ -242,50 +282,68 @@
   );
 
   box-shadow: 0 4px 14px rgba(30, 64, 175, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.bulk-product:hover {
+  transform: translateY(-3px);
+
+  border-color: #93c5fd;
+
+  box-shadow: 0 9px 22px rgba(30, 64, 175, 0.1);
 }
 
 /* =========================
-   Event Image
+   Bulk Image
    ========================= */
 
-.event-image-wrap {
-  width: 56%;
+.bulk-image-wrap {
+  width: 48%;
+  height: 205px;
 
-  min-height: 190px;
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 8px 18px;
+  padding: 10px 12px;
 }
 
-.event-image-wrap img {
+.bulk-image {
   width: 100%;
-  height: 175px;
+  height: 100%;
 
   display: block;
 
   object-fit: contain;
 }
 
-/* =========================
-   Event Information
-   ========================= */
-
-.event-info {
-  width: 44%;
-
-  padding: 22px 28px 22px 8px;
+/* 500L Tank */
+.bulk-product:first-child .bulk-image {
+  transform: scale(1.05);
 }
 
-.event-label {
-  margin: 0 0 7px;
+/* =========================
+   Bulk Information
+   ========================= */
+
+.bulk-info {
+  width: 52%;
+
+  padding: 20px 20px 20px 4px;
+}
+
+.bulk-label {
+  margin: 0 0 6px;
 
   color: #0369a1;
 
-  font-size: 0.72rem;
-
+  font-size: 0.64rem;
   font-weight: 800;
 
   letter-spacing: 0.12em;
@@ -293,88 +351,80 @@
   line-height: 1.2;
 }
 
-.event-info h3 {
+.bulk-info h3 {
   margin: 0;
 
   color: #0b1f55;
 
-  font-size: 1.65rem;
-
+  font-size: 1.3rem;
   font-weight: 800;
 
   line-height: 1.15;
 }
 
-.event-info > p:not(.event-label) {
-  margin: 9px 0 0;
-
-  max-width: 420px;
+.bulk-description {
+  margin: 8px 0 0;
 
   color: #334155;
 
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* =========================
-   Event Price
+   Bulk Price
    ========================= */
 
-.event-price {
+.bulk-price {
   display: flex;
-
   align-items: baseline;
 
-  gap: 8px;
+  gap: 7px;
 
-  margin-top: 15px;
+  margin-top: 12px;
 }
 
-.event-price strong {
+.bulk-price strong {
   color: #075dcc;
 
-  font-size: 2rem;
-
+  font-size: 1.65rem;
   font-weight: 900;
 
   line-height: 1;
 }
 
-.event-price span {
+.bulk-price span {
   color: #334155;
 
-  font-size: 0.78rem;
-
+  font-size: 0.68rem;
   font-weight: 700;
 }
 
 /* =========================
-   Event Button
+   Bulk Button
    ========================= */
 
-.event-button {
+.bulk-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  margin-top: 16px;
+  margin-top: 12px;
 
-  padding: 10px 22px;
+  padding: 8px 17px;
 
-  border-radius: 9px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
 
   background: #ffffff;
 
   color: #075985;
 
-  border: 1px solid #bfdbfe;
+  font-size: 0.72rem;
+  font-weight: 800;
 
   text-decoration: none;
-
-  font-size: 0.82rem;
-
-  font-weight: 800;
 
   transition:
     background 0.2s ease,
@@ -383,7 +433,7 @@
     box-shadow 0.2s ease;
 }
 
-.event-button:hover {
+.bulk-button:hover {
   background: #0284c7;
 
   color: #ffffff;
@@ -437,8 +487,6 @@
   }
 
   .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-
     gap: 9px;
   }
 
@@ -470,7 +518,6 @@
 
   .product-price strong {
     padding: 5px 10px;
-
     font-size: 0.82rem;
   }
 
@@ -478,32 +525,26 @@
     font-size: 0.58rem;
   }
 
-  .event-image-wrap {
-    width: 52%;
-
-    min-height: 165px;
-  }
-
-  .event-image-wrap img {
-    height: 150px;
-  }
-
-  .event-info {
+  .bulk-image-wrap {
     width: 48%;
-
-    padding: 18px 20px 18px 5px;
+    height: 180px;
   }
 
-  .event-info h3 {
-    font-size: 1.4rem;
+  .bulk-info {
+    width: 52%;
+    padding: 17px 17px 17px 3px;
   }
 
-  .event-info > p:not(.event-label) {
-    font-size: 0.78rem;
+  .bulk-info h3 {
+    font-size: 1.15rem;
   }
 
-  .event-price strong {
-    font-size: 1.7rem;
+  .bulk-description {
+    font-size: 0.7rem;
+  }
+
+  .bulk-price strong {
+    font-size: 1.5rem;
   }
 }
 
@@ -528,9 +569,10 @@
     width: 45px;
   }
 
+  /* Regular products become
+     one card per row */
   .products-grid {
     grid-template-columns: 1fr;
-
     gap: 9px;
   }
 
@@ -544,13 +586,11 @@
 
   .product-image-wrap {
     width: 32%;
-
     height: 100px;
   }
 
   .product-info {
     width: 68%;
-
     padding-left: 8px;
   }
 
@@ -581,70 +621,84 @@
   }
 
   /* =========================
-     Event Card - Mobile
+     Bulk Heading
      ========================= */
 
-  .event-product {
-    flex-direction: column;
+  .bulk-heading {
+    gap: 8px;
 
-    margin-top: 9px;
+    margin: 18px 0 9px;
+  }
 
+  .bulk-heading h2 {
+    font-size: 0.72rem;
+  }
+
+  /* =========================
+     Bulk Products
+     ========================= */
+
+  .bulk-grid {
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+  }
+
+  .bulk-product {
     border-radius: 12px;
   }
 
-  .event-image-wrap {
-    width: 100%;
+  .bulk-image-wrap {
+    width: 42%;
+    height: 150px;
 
-    min-height: 125px;
-
-    padding: 8px 12px 0;
+    padding: 8px;
   }
 
-  .event-image-wrap img {
-    width: 100%;
-    height: 120px;
+  .bulk-info {
+    width: 58%;
+
+    padding: 13px 12px 13px 2px;
   }
 
-  .event-info {
-    width: 100%;
-
-    padding: 8px 18px 18px;
-  }
-
-  .event-label {
-    font-size: 0.65rem;
-
+  .bulk-label {
     margin-bottom: 5px;
+
+    font-size: 0.58rem;
   }
 
-  .event-info h3 {
-    font-size: 1.25rem;
+  .bulk-info h3 {
+    font-size: 1.05rem;
   }
 
-  .event-info > p:not(.event-label) {
-    margin-top: 7px;
+  .bulk-description {
+    margin-top: 6px;
 
-    font-size: 0.76rem;
+    font-size: 0.67rem;
+
+    line-height: 1.35;
   }
 
-  .event-price {
-    margin-top: 12px;
+  .bulk-price {
+    margin-top: 9px;
+
+    gap: 5px;
   }
 
-  .event-price strong {
-    font-size: 1.7rem;
+  .bulk-price strong {
+    font-size: 1.4rem;
   }
 
-  .event-price span {
+  .bulk-price span {
+    font-size: 0.6rem;
+  }
+
+  .bulk-button {
+    margin-top: 9px;
+
+    padding: 8px 14px;
+
     font-size: 0.68rem;
-  }
-
-  .event-button {
-    margin-top: 12px;
-
-    padding: 9px 18px;
-
-    font-size: 0.75rem;
   }
 
   /* =========================
@@ -679,7 +733,6 @@
 
   .product-image-wrap {
     width: 30%;
-
     height: 90px;
   }
 
@@ -695,19 +748,20 @@
     font-size: 0.7rem;
   }
 
-  .event-image-wrap {
-    min-height: 110px;
+  .bulk-image-wrap {
+    width: 40%;
+    height: 135px;
   }
 
-  .event-image-wrap img {
-    height: 105px;
+  .bulk-info {
+    width: 60%;
   }
 
-  .event-info h3 {
-    font-size: 1.15rem;
+  .bulk-info h3 {
+    font-size: 0.98rem;
   }
 
-  .event-price strong {
-    font-size: 1.55rem;
+  .bulk-price strong {
+    font-size: 1.3rem;
   }
 }
