@@ -210,4 +210,31 @@ router.patch("/:id/status", adminAuth, async (req, res) => {
     });
   }
 });
+
+router.delete("/:id", adminAuth, async (req, res) => {
+  try {
+    const order = await Order.findByIdAndDelete(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: "Order not found.",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Order deleted successfully.",
+    });
+  } catch (error) {
+    console.error("Failed to delete order:");
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete order.",
+    });
+  }
+});
+
 module.exports = router;
