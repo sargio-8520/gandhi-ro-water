@@ -30,7 +30,9 @@ app.use("/api/orders", orderRoutes);
 ========================= */
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, {
+    dbName: "gandhi_ro_water",
+  })
   .then(() => {
     console.log("MongoDB connected successfully.");
   })
