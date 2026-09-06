@@ -1,6 +1,6 @@
 const express = require("express");
 const Order = require("../models/Order");
-
+const adminAuth = require("../middleware/adminAuth");
 const router = express.Router();
 
 const products = {
@@ -143,4 +143,71 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/", adminAuth, async (req, res) => {
+  try {
+    const orders = await Order.find().sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      orders,
+    });
+  } catch (error) {
+    console.error("Failed to fetch orders:");
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch orders.",
+    });
+  }
+});
+
+router.patch("/:id/status", adminAuth, async (req, res) => {
+  try {
+    const allowedStatuses = [
+      "New",
+      "Confirmed",
+      "Delivered",
+      "Cancelled",
+    ];
+
+    const { status } = req.body;
+
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid order status.",
+      });
+    }
+
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: "Order not found.",
+      });
+    }
+
+    res.json({
+      success: true,
+      order,
+    });
+  } catch (error) {
+    console.error("Failed to update order status:");
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update order status.",
+    });
+  }
+});
 module.exports = router;
