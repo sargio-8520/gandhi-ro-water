@@ -1421,3 +1421,13 @@
     width: 100%;
   }
 }
+.order-error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}

@@ -64,7 +64,7 @@ function Order() {
   const [errors, setErrors] = useState({});
   const [productsError, setProductsError] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
-
+  const [orderError, setOrderError] = useState("");
   const updateQuantity = (id, value) => {
     const quantity = Math.max(0, Number(value) || 0);
 
@@ -165,56 +165,98 @@ function Order() {
     );
   };
 
-  const orderOnWhatsApp = () => {
-    if (!validateOrder()) {
-      return;
-    }
+  const orderOnWhatsApp = async () => {
+      if (!validateOrder()) {
+        return;
+      }
 
-    const productLines = selectedProducts
-      .map((product) => {
-        const quantity = quantities[product.id];
-        const total = quantity * product.price;
+      setOrderError("");
 
-        return `${product.name}
-Quantity: ${quantity}
-Price: ₹${product.price} ${product.unit}
-Total: ₹${total}`;
-      })
-      .join("\n\n");
+      const orderItems = selectedProducts.map((product) => ({
+        productId: product.id,
+        quantity: quantities[product.id],
+      }));
 
-    const message = `Hello Gandhi RO Water Enterprises,
+      try {
+        const response = await fetch("http://localhost:5000/api/orders", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            customer: {
+              name: customer.name,
+              phone: customer.phone,
+              area: customer.area,
+              address: customer.address,
+              note: customer.note,
+            },
+            items: orderItems,
+          }),
+        });
 
-I would like to place an order.
+        const data = await response.json();
 
-CUSTOMER DETAILS
-Name: ${customer.name}
-Phone: ${customer.phone}
-Area: ${customer.area}
-Address: ${customer.address}${
-      customer.note.trim()
-        ? `\nNote: ${customer.note}`
-        : ""
-    }
+        if (!response.ok || !data.success) {
+          throw new Error(
+            data.message || "Failed to save your order."
+          );
+        }
 
-ORDER DETAILS
-${productLines}
+        const productLines = selectedProducts
+          .map((product) => {
+            const quantity = quantities[product.id];
+            const total = quantity * product.price;
 
-Total Items: ${totalItems}
-Grand Total: ₹${grandTotal}
+            return `${product.name}
+    Quantity: ${quantity}
+    Price: ₹${product.price} ${product.unit}
+    Total: ₹${total}`;
+          })
+          .join("\n\n");
 
-Please confirm my order and delivery.`;
+        const message = `Hello Gandhi RO Water Enterprises,
 
-    const whatsappUrl =
-      "https://wa.me/918521836703?text=" +
-      encodeURIComponent(message);
+    I would like to place an order.
 
-    setOrderPlaced(true);
+    CUSTOMER DETAILS
+    Name: ${customer.name}
+    Phone: ${customer.phone}
+    Area: ${customer.area}
+    Address: ${customer.address}${
+          customer.note.trim()
+            ? `\nNote: ${customer.note}`
+            : ""
+        }
 
-    window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    ORDER DETAILS
+    ${productLines}
+
+    Total Items: ${totalItems}
+    Grand Total: ₹${grandTotal}
+
+    Order ID: ${data.orderId}
+
+    Please confirm my order and delivery.`;
+
+        const whatsappUrl =
+          "https://wa.me/918521836703?text=" +
+          encodeURIComponent(message);
+
+        setOrderPlaced(true);
+
+        window.open(
+          whatsappUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
+      } catch (error) {
+        console.error("Order submission failed:", error);
+
+        setOrderError(
+          "Could not save your order. Please try again."
+        );
+      }
   };
 
   const resetOrder = () => {
@@ -588,6 +630,11 @@ Please confirm my order and delivery.`;
                     New Order
                   </button>
 
+                </div>
+              )}
+              {orderError && (
+                <div className="order-error">
+                  {orderError}
                 </div>
               )}
 
